@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ page.title }}</title>
+        <link rel="stylesheet" href="{{ '/style.css' | url }}">
+    </head>
+    <body>
+        <header>
+            <h1>
+                Welcome to {{ site.title }}
+            </h1>
+            <a href="/" aria-label="Home">Home</a>
+        </header>
+
+        <main>
+
+
+            Begin unique content: {{ content | safe }} Being body content:
+            {% block bodyContent %}{% endblock %}
+        </main>
+
+        <footer>
+            <h2>Footer</h2>
+
+
+            <ul>
+                {%- for species in pokemon %}
+                    <li>
+                        <a href="/pokemon/{{ species.name | slug }}/">{{ species.name }}</a>
+                    </li>
+                {% endfor -%}
+            </ul>
+
+            <ul>
+                {% for key, species in bird_data.birds %}
+                    <li>
+                        <a href="/{{ species.slug }}/">{{ species.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </footer>
+    </body>
+</html>
