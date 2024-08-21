@@ -1,20 +1,24 @@
-# Misc
-*.log
-npm-debug.*
-*.scssc
-*.swp
-.DS_Store
-Thumbs.db
-.sass-cache
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
 .env
-.cache
+.env.production
 
-# Node modules and output
-node_modules
-public
+# macOS-specific files
+.DS_Store
 
-# Other things
-package-lock.json
-
-# Local Netlify folder
-.netlify
+# jetbrains setting folder
+.idea/

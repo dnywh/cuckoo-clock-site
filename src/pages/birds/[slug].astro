@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ThreeScene from "../../components/ThreeScene.astro";
+
+import birdData from "../../data/bird_data.json";
+
+export function getStaticPaths() {
+  return Object.values(birdData.birds).map((bird) => ({
+    params: { slug: bird.slug },
+    props: { bird },
+  }));
+}
+
+const { bird } = Astro.props;
+---
+
+<Layout title={bird.name}>
+  <ThreeScene imageSlug=`${bird.slug}.jpg` />
+  <h1>{bird.name}</h1>
+  <h2>Active Hours by Season</h2>
+  <ul>
+    {
+      Object.entries(bird.seasons).map(([season, times]) => (
+        <li>
+          {season}: {times.join(", ")}
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
