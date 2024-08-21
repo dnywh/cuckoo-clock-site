@@ -6,22 +6,48 @@ import { getCurrentSeasonAndTime } from "../utils/timeUtils";
 import { getMergedBirdData } from "../utils/birdDataMerger";
 
 const { season, time } = getCurrentSeasonAndTime();
-const mergedBirdData = getMergedBirdData();
+const birds = getMergedBirdData();
 
 let currentBird = null;
-let earliestTime = "23:59";
+let latestActiveTime = -1; // Initialize to start of day in minutes
+let debugInfo = [];
 
-for (const [slug, bird] of Object.entries(mergedBirdData)) {
+function timeToMinutes(timeStr) {
+  const [hours, minutes] = timeStr.split(":").map(Number);
+  return hours * 60 + minutes;
+}
+
+const currentTimeMinutes = timeToMinutes(time);
+
+for (const [slug, bird] of Object.entries(birds)) {
+  debugInfo.push(`Checking ${slug}:`);
   if (bird.seasons && bird.seasons[season]) {
     const birdTime = bird.seasons[season][0];
-    if (birdTime <= time && birdTime > earliestTime) {
+    const birdTimeMinutes = timeToMinutes(birdTime);
+    debugInfo.push(
+      `  Season: ${season}, Bird Time: ${birdTime} (${birdTimeMinutes} minutes)`
+    );
+    if (
+      birdTimeMinutes <= currentTimeMinutes &&
+      birdTimeMinutes > latestActiveTime
+    ) {
       currentBird = slug;
-      earliestTime = birdTime;
+      latestActiveTime = birdTimeMinutes;
+      debugInfo.push(`  Current bird updated to: ${slug}`);
+    } else {
+      debugInfo.push(
+        `  Not updated. Current time: ${time} (${currentTimeMinutes} minutes), Latest active time: ${latestActiveTime} minutes`
+      );
     }
+  } else {
+    debugInfo.push(`  No data for current season (${season})`);
   }
 }
 
+debugInfo.push(`Final current bird: ${currentBird}`);
+
 if (currentBird) {
+  debugInfo.push(`Redirecting to /birds/${currentBird}`);
   return Astro.redirect(`/birds/${currentBird}`);
 }
 ---
@@ -31,6 +57,9 @@ if (currentBird) {
     <h1>No bird currently in session</h1>
     <p>Current season: {season}</p>
     <p>Current time: {time}</p>
+
+    <h2>Debug Log:</h2>
+    <pre>{debugInfo.join('\n')}</pre>
 
     <p class="instructions">Here are all the birds:</p>
     <ul role="list" class="link-card-grid">
