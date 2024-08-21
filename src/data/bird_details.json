@@ -6,12 +6,10 @@
     "diet": "Omnivorous, feeding on insects, worms, small animals, and some plant matter.",
     "images": [
       {
-        "url": "/images/australian-magpie/australian-magpie.jpg",
-        "caption": "Australian Magpie"
-      },
-      {
-        "url": "/images/australian-magpie/in-flight.jpg",
-        "caption": "Australian Magpie in flight"
+        "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/421862384/large.jpg",
+        "source": "https://inaturalist.ala.org.au/observations/237072907",
+        "author": "jg001",
+        "caption": "Australian Magpie doing its thing"
       }
     ],
     "funFacts": [
@@ -86,12 +84,10 @@
     "diet": "Mostly insectivorous, catching insects mid-air or on the ground.",
     "images": [
       {
-        "url": "/images/willie-wagtail/willie-wagtail.jpg",
-        "caption": "Willie Wagtail"
-      },
-      {
-        "url": "/images/willie-wagtail/nesting.jpg",
-        "caption": "Willie Wagtail on its nest"
+        "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/50151413/original.jpg",
+        "source": "https://www.flickr.com/photos/lipkee/2281219861/",
+        "author": "Lip Kee",
+        "caption": "TODO"
       }
     ],
     "funFacts": [

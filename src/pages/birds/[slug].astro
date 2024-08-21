@@ -2,6 +2,8 @@
 import Layout from "../../layouts/Layout.astro";
 import ThreeScene from "../../components/ThreeScene.astro";
 
+import { Image } from "astro:assets";
+
 import { getMergedBirdData } from "../../utils/birdDataMerger";
 import { getCurrentSeasonAndTime } from "../../utils/timeUtils";
 
@@ -44,15 +46,21 @@ if (!bird) {
         </>
       )
     }
-
     {
       bird.images && bird.images.length > 0 && (
         <>
           <h2>Images</h2>
           {bird.images.map((image) => (
             <figure>
-              <img src={image.url} alt={image.caption} />
-              <figcaption>{image.caption}</figcaption>
+              <Image
+                src={image.url}
+                alt={image.caption}
+                width="200"
+                height="140"
+              />
+              <figcaption>
+                Photo by <a href={image.source}>{image.author}</a>
+              </figcaption>
             </figure>
           ))}
         </>
