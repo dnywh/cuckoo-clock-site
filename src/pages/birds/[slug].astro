@@ -2,29 +2,72 @@
 import Layout from "../../layouts/Layout.astro";
 import ThreeScene from "../../components/ThreeScene.astro";
 
-import birdData from "../../data/bird_data.json";
+import { getMergedBirdData } from "../../utils/birdDataMerger";
+import { getCurrentSeasonAndTime } from "../../utils/timeUtils";
 
 export function getStaticPaths() {
-  return Object.values(birdData.birds).map((bird) => ({
-    params: { slug: bird.slug },
-    props: { bird },
-  }));
+  const mergedBirdData = getMergedBirdData();
+  return Object.keys(mergedBirdData).map((slug) => ({ params: { slug } }));
 }
 
-const { bird } = Astro.props;
+const { slug } = Astro.params;
+const mergedBirdData = getMergedBirdData();
+const bird = mergedBirdData[slug];
+const { season } = getCurrentSeasonAndTime();
+
+// Handle case where bird doesn't exist
+if (!bird) {
+  return Astro.redirect("/404"); // TODO build 404 page
+}
 ---
 
 <Layout title={bird.name}>
-  <ThreeScene imageSlug=`${bird.slug}.jpg` />
-  <h1>{bird.name}</h1>
-  <h2>Active Hours by Season</h2>
-  <ul>
+  <main>
+    <ThreeScene imageSlug=`${bird.slug}.jpg` />
+    <h1>{bird.name}</h1>
+    <p>Scientific Name: {bird.scientificName}</p>
+    <p>Habitat: {bird.habitat}</p>
+    <p>Description: {bird.description}</p>
+    <p>Diet: {bird.diet}</p>
+    <p>Current season: {season}</p>
+    <p>Active time this season: {bird.seasons[season]?.[0] || "Not active"}</p>
+
     {
-      Object.entries(bird.seasons).map(([season, times]) => (
-        <li>
-          {season}: {times.join(", ")}
-        </li>
-      ))
+      bird.funFacts && bird.funFacts.length > 0 && (
+        <>
+          <h2>Fun Facts</h2>
+          <ul>
+            {bird.funFacts.map((fact) => (
+              <li>{fact}</li>
+            ))}
+          </ul>
+        </>
+      )
     }
-  </ul>
+
+    {
+      bird.images && bird.images.length > 0 && (
+        <>
+          <h2>Images</h2>
+          {bird.images.map((image) => (
+            <figure>
+              <img src={image.url} alt={image.caption} />
+              <figcaption>{image.caption}</figcaption>
+            </figure>
+          ))}
+        </>
+      )
+    }
+  </main>
 </Layout>
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+</style>

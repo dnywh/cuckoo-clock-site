@@ -1,0 +1,102 @@
+{
+  "australian-magpie": {
+    "scientificName": "Gymnorhina tibicen",
+    "description": "The Australian magpie is a medium-sized black and white passerine bird native to Australia and southern New Guinea.",
+    "habitat": "Found in a variety of habitats across Australia, including urban areas, farmlands, and forests.",
+    "diet": "Omnivorous, feeding on insects, worms, small animals, and some plant matter.",
+    "images": [
+      {
+        "url": "/images/australian-magpie/australian-magpie.jpg",
+        "caption": "Australian Magpie"
+      },
+      {
+        "url": "/images/australian-magpie/in-flight.jpg",
+        "caption": "Australian Magpie in flight"
+      }
+    ],
+    "funFacts": [
+      "Known for their beautiful and complex vocalizations",
+      "Can recognize and remember individual human faces"
+    ]
+  },
+  "laughing-kookaburra": {
+    "scientificName": "Dacelo novaeguineae",
+    "description": "The laughing kookaburra is a large terrestrial tree kingfisher native to eastern Australia.",
+    "habitat": "Woodland territories, open eucalyptus forests, and park lands.",
+    "diet": "Carnivorous, eating mice, snakes, insects, small reptiles, and the young of other birds.",
+    "images": [
+      {
+        "url": "/images/laughing-kookaburra/laughing-kookaburra.jpg",
+        "caption": "Laughing Kookaburra"
+      },
+      {
+        "url": "/images/laughing-kookaburra/perched.jpg",
+        "caption": "Laughing Kookaburra perched on a branch"
+      }
+    ],
+    "funFacts": [
+      "Known for its distinctive laughing call",
+      "Can live for up to 20 years in the wild"
+    ]
+  },
+  "superb-fairywren": {
+    "scientificName": "Malurus cyaneus",
+    "description": "The superb fairywren is a passerine bird in the Australasian wren family, Maluridae.",
+    "habitat": "Found in almost any area that has at least a little dense undergrowth for shelter.",
+    "diet": "Mainly insectivorous, feeding on a wide range of small creatures.",
+    "images": [
+      {
+        "url": "/images/superb-fairywren/superb-fairywren.jpg",
+        "caption": "Superb Fairywren"
+      },
+      {
+        "url": "/images/superb-fairywren/female.jpg",
+        "caption": "Female Superb Fairywren"
+      }
+    ],
+    "funFacts": [
+      "Males have a brilliant blue and black plumage during breeding season",
+      "They are socially monogamous and sexually promiscuous"
+    ]
+  },
+  "rainbow-lorikeet": {
+    "scientificName": "Trichoglossus moluccanus",
+    "description": "The rainbow lorikeet is a species of parrot found in Australia. It is common along the eastern seaboard, from northern Queensland to South Australia.",
+    "habitat": "Rainforests, coastal bushes and woodland areas.",
+    "diet": "Primarily nectar and pollen, but also fruits, seeds and some insects.",
+    "images": [
+      {
+        "url": "/images/rainbow-lorikeet/rainbow-lorikeet.jpg",
+        "caption": "Rainbow Lorikeet"
+      },
+      {
+        "url": "/images/rainbow-lorikeet/feeding.jpg",
+        "caption": "Rainbow Lorikeet feeding on nectar"
+      }
+    ],
+    "funFacts": [
+      "Known for their bright coloration and noisy calls",
+      "They have a brush-tipped tongue for feeding on nectar"
+    ]
+  },
+  "willie-wagtail": {
+    "scientificName": "Rhipidura leucophrys",
+    "description": "The willie wagtail is a passerine bird native to Australia, New Guinea, the Solomon Islands, the Bismarck Archipelago, and eastern Indonesia.",
+    "habitat": "Found in most open habitats, especially around human habitation and in urban areas.",
+    "diet": "Mostly insectivorous, catching insects mid-air or on the ground.",
+    "images": [
+      {
+        "url": "/images/willie-wagtail/willie-wagtail.jpg",
+        "caption": "Willie Wagtail"
+      },
+      {
+        "url": "/images/willie-wagtail/nesting.jpg",
+        "caption": "Willie Wagtail on its nest"
+      }
+    ],
+    "funFacts": [
+      "Known for its fan-like tail that it swings from side to side",
+      "Bold for its size, often seen chasing away larger birds"
+    ]
+  }
+}
