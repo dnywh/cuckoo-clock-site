@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+
+import { getMergedBirdData } from "../../utils/birdDataMerger";
+
+const mergedBirdData = getMergedBirdData();
+---
+
+<Layout title="Bird Index">
+  <main>
+    <h1>All Birds</h1>
+
+    <p>Here are all the birds:</p>
+    <ul role="list" class="link-card-grid">
+      {
+        Object.entries(mergedBirdData).map(([slug, bird]) => (
+          <Card
+            href={`/birds/${slug}`}
+            title={bird.name}
+            body={
+              bird.habitat
+                ? `Habitat: ${bird.habitat}`
+                : "No habitat information available"
+            }
+          />
+        ))
+      }
+    </ul>
+  </main>
+</Layout>

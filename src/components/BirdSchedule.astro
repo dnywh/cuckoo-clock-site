@@ -1,0 +1,48 @@
+---
+import { getMergedBirdData } from "../utils/birdDataMerger";
+import { seasons } from "../data/bird_data.json";
+
+const mergedBirdData = getMergedBirdData();
+
+// Determine the current season
+const month = new Date().getMonth() + 1; // getMonth() returns 0-11
+let currentSeason;
+for (const [season, data] of Object.entries(seasons)) {
+  if (data.months.includes(month)) {
+    currentSeason = season;
+    break;
+  }
+}
+
+// Helper function to format time (HH:MM) to AM/PM format
+function formatTime(time) {
+  const [hours, minutes] = time.split(":").map(Number);
+  const period = hours >= 12 ? "PM" : "AM";
+  const formattedHours = hours % 12 || 12;
+  return `${formattedHours}:${minutes.toString().padStart(2, "0")} ${period}`;
+}
+
+// Sort birds by their wake-up time for the current season
+const sortedBirds = Object.entries(mergedBirdData)
+  .filter(([_, bird]) => bird.seasons[currentSeason])
+  .sort((a, b) => {
+    const timeA = a[1].seasons[currentSeason][0];
+    const timeB = b[1].seasons[currentSeason][0];
+    return timeA.localeCompare(timeB);
+  });
+---
+
+<div class="bird-schedule">
+  <h2>Bird schedule for today ({currentSeason})</h2>
+  <ul>
+    {
+      sortedBirds.map(([slug, bird]) => (
+        <li>
+          <a href={`/birds/${slug}`}>
+            {formatTime(bird.seasons[currentSeason][0])} - {bird.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
