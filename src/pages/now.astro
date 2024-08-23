@@ -1,83 +1,183 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import ThreeScene from "../components/ThreeScene.astro";
 
 import { getCurrentSeasonAndTime } from "../utils/timeUtils";
 import { getMergedBirdData } from "../utils/birdDataMerger";
 
+// Initial server-side calculations
 const { season, time } = getCurrentSeasonAndTime();
 const mergedBirdData = getMergedBirdData();
 
-let currentBird = null;
-let latestActiveTime = -1; // Initialize to start of day in minutes
-let debugInfo = [];
+// Function to get the current bird based on time
+function getCurrentBird(season, time, birdData) {
+  const currentTimeMinutes = timeToMinutes(time);
+  let currentBird = null;
+  let latestActiveTime = -1;
+
+  for (const [slug, bird] of Object.entries(birdData)) {
+    if (bird.seasons && bird.seasons[season]) {
+      const birdTime = bird.seasons[season][0];
+      const birdTimeMinutes = timeToMinutes(birdTime);
+      if (
+        birdTimeMinutes <= currentTimeMinutes &&
+        birdTimeMinutes > latestActiveTime
+      ) {
+        currentBird = slug;
+        latestActiveTime = birdTimeMinutes;
+      }
+    }
+  }
+
+  return currentBird;
+}
 
 function timeToMinutes(timeStr) {
   const [hours, minutes] = timeStr.split(":").map(Number);
   return hours * 60 + minutes;
 }
 
-const currentTimeMinutes = timeToMinutes(time);
-
-for (const [slug, bird] of Object.entries(mergedBirdData)) {
-  debugInfo.push(`Checking ${slug}:`);
-  if (bird.seasons && bird.seasons[season]) {
-    const birdTime = bird.seasons[season][0];
-    const birdTimeMinutes = timeToMinutes(birdTime);
-    debugInfo.push(
-      `  Season: ${season}, Bird Time: ${birdTime} (${birdTimeMinutes} minutes)`
-    );
-    if (
-      birdTimeMinutes <= currentTimeMinutes &&
-      birdTimeMinutes > latestActiveTime
-    ) {
-      currentBird = slug;
-      latestActiveTime = birdTimeMinutes;
-      debugInfo.push(`  Current bird updated to: ${slug}`);
-    } else {
-      debugInfo.push(
-        `  Not updated. Current time: ${time} (${currentTimeMinutes} minutes), Latest active time: ${latestActiveTime} minutes`
-      );
-    }
-  } else {
-    debugInfo.push(`  No data for current season (${season})`);
-  }
-}
-
-debugInfo.push(`Final current bird: ${currentBird}`);
-
-if (currentBird) {
-  debugInfo.push(`Redirecting to /birds/${currentBird}`);
-  return Astro.redirect(`/birds/${currentBird}`);
-}
+const currentBirdSlug = getCurrentBird(season, time, mergedBirdData);
+const currentBird = currentBirdSlug ? mergedBirdData[currentBirdSlug] : null;
 ---
 
 <Layout title="Now">
-  <main>
-    <h1>No bird currently in session</h1>
-    <p>Current season: {season}</p>
-    <p>Current time: {time}</p>
+  <main id="bird-display">
+    {
+      currentBird ? (
+        <>
+          <ThreeScene imageSlug={`${currentBirdSlug}.jpg`} />
+          <h1 id="bird-name">{currentBird.name}</h1>
+          <p>
+            Scientific Name:{" "}
+            <span id="scientific-name">{currentBird.scientificName}</span>
+          </p>
+          <p>
+            Habitat: <span id="habitat">{currentBird.habitat}</span>
+          </p>
+          <p>
+            Description: <span id="description">{currentBird.description}</span>
+          </p>
+          <p>
+            Diet: <span id="diet">{currentBird.diet}</span>
+          </p>
+          <p>
+            Current season: <span id="current-season">{season}</span>
+          </p>
+          <p>
+            Active time this season:{" "}
+            <span id="active-time">
+              {currentBird.seasons[season]?.[0] || "Not active"}
+            </span>
+          </p>
 
-    <h2>Debug Log:</h2>
-    <pre>{debugInfo.join('\n')}</pre>
-
-    <p class="instructions">Here are all the birds:</p>
-    <ul role="list" class="link-card-grid">
-      {
-        Object.entries(mergedBirdData).map(([slug, bird]) => (
-          <Card
-            href={`/birds/${slug}`}
-            title={bird.name}
-            body={
-              bird.habitat
-                ? `Habitat: ${bird.habitat}`
-                : "No habitat information available"
-            }
-          />
-        ))
-      }
-    </ul>
+          {currentBird.funFacts && currentBird.funFacts.length > 0 && (
+            <>
+              <h2>Fun Facts</h2>
+              <ul id="fun-facts">
+                {currentBird.funFacts.map((fact) => (
+                  <li>{fact}</li>
+                ))}
+              </ul>
+            </>
+          )}
+        </>
+      ) : (
+        <h1>No bird currently in session</h1>
+      )
+    }
+    <p>Current time: <span id="current-time">{time}</span></p>
   </main>
+
+  <script>
+    import { getCurrentSeasonAndTime } from "../utils/timeUtils";
+    import { getMergedBirdData } from "../utils/birdDataMerger";
+
+    const mergedBirdData = getMergedBirdData();
+
+    function getCurrentBird(season, time, birdData) {
+      const currentTimeMinutes = timeToMinutes(time);
+      let currentBird = null;
+      let latestActiveTime = -1;
+
+      for (const [slug, bird] of Object.entries(birdData)) {
+        if (bird.seasons && bird.seasons[season]) {
+          const birdTime = bird.seasons[season][0];
+          const birdTimeMinutes = timeToMinutes(birdTime);
+          if (
+            birdTimeMinutes <= currentTimeMinutes &&
+            birdTimeMinutes > latestActiveTime
+          ) {
+            currentBird = slug;
+            latestActiveTime = birdTimeMinutes;
+          }
+        }
+      }
+
+      return currentBird;
+    }
+
+    function timeToMinutes(timeStr) {
+      const [hours, minutes] = timeStr.split(":").map(Number);
+      return hours * 60 + minutes;
+    }
+
+    function updateDisplay() {
+      const { season, time } = getCurrentSeasonAndTime();
+      const currentBirdSlug = getCurrentBird(season, time, mergedBirdData);
+      const currentBird = currentBirdSlug
+        ? mergedBirdData[currentBirdSlug]
+        : null;
+
+      document.getElementById("current-season").textContent = season;
+      document.getElementById("current-time").textContent = time;
+
+      const birdDisplay = document.getElementById("bird-display");
+      if (currentBird) {
+        birdDisplay.innerHTML = `
+          <astro-island uid="some-unique-id">
+            <three-scene image-slug="${currentBirdSlug}.jpg"></three-scene>
+          </astro-island>
+          <h1 id="bird-name">${currentBird.name}</h1>
+          <p>Scientific Name: <span id="scientific-name">${currentBird.scientificName}</span></p>
+          <p>Habitat: <span id="habitat">${currentBird.habitat}</span></p>
+          <p>Description: <span id="description">${currentBird.description}</span></p>
+          <p>Diet: <span id="diet">${currentBird.diet}</span></p>
+          <p>Current season: <span id="current-season">${season}</span></p>
+          <p>Active time this season: <span id="active-time">${currentBird.seasons[season]?.[0] || "Not active"}</span></p>
+          ${
+            currentBird.funFacts && currentBird.funFacts.length > 0
+              ? `
+            <h2>Fun Facts</h2>
+            <ul id="fun-facts">
+              ${currentBird.funFacts.map((fact) => `<li>${fact}</li>`).join("")}
+            </ul>
+          `
+              : ""
+          }
+        `;
+      } else {
+        birdDisplay.innerHTML = "<h1>No bird currently in session</h1>";
+      }
+    }
+
+    function checkForUpdate() {
+      const currentMinutes = new Date().getMinutes();
+      if (currentMinutes === 0) {
+        updateDisplay();
+      }
+    }
+
+    // Check for updates every minute
+    setInterval(checkForUpdate, 60000);
+
+    // Also update when the page becomes visible again (e.g., after being in a background tab)
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) {
+        updateDisplay();
+      }
+    });
+  </script>
 </Layout>
 
 <style>
@@ -89,55 +189,5 @@ if (currentBird) {
     color: white;
     font-size: 20px;
     line-height: 1.6;
-  }
-  .astro-a {
-    position: absolute;
-    top: -32px;
-    left: 50%;
-    transform: translatex(-50%);
-    width: 220px;
-    height: auto;
-    z-index: -1;
-  }
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    margin-bottom: 2rem;
-    border: 1px solid rgba(var(--accent-light), 25%);
-    background: linear-gradient(
-      rgba(var(--accent-dark), 66%),
-      rgba(var(--accent-dark), 33%)
-    );
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-  .instructions code {
-    font-size: 0.8em;
-    font-weight: bold;
-    background: rgba(var(--accent-light), 12%);
-    color: rgb(var(--accent-light));
-    border-radius: 4px;
-    padding: 0.3em 0.4em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent-light));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
   }
 </style>
