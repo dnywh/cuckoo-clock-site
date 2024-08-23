@@ -5,6 +5,8 @@ import ThreeScene from "../components/ThreeScene.astro";
 import { getCurrentSeasonAndTime } from "../utils/timeUtils";
 import { getMergedBirdData } from "../utils/birdDataMerger";
 
+Astro.response.headers.set("Cache-Control", "public, max-age=3600");
+
 // Initial server-side calculations
 const { season, time } = getCurrentSeasonAndTime();
 const mergedBirdData = getMergedBirdData();
