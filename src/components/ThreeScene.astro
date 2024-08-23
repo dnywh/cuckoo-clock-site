@@ -37,7 +37,7 @@ const { imageSlug } = Astro.props;
   updateSizes();
 
   // Position camera
-  camera.position.set(0, 2, 5);
+  camera.position.set(0, -100, 100);
   camera.lookAt(0, 0, 0);
 
   // Create a texture loader
@@ -46,7 +46,7 @@ const { imageSlug } = Astro.props;
   // Load the model
   const loader = new GLTFLoader();
   loader.load(
-    "/models/test-cube-03.glb",
+    "/models/test-08.glb",
     (gltf) => {
       console.log("GLTF model loaded successfully");
       scene.add(gltf.scene);
@@ -67,7 +67,7 @@ const { imageSlug } = Astro.props;
           console.log(`  Material name: ${child.material.name}`);
 
           // Apply texture to specific material (e.g., 'testFront')
-          if (child.material.name === "testFront") {
+          if (child.material.name === "screen") {
             console.log("  Applying texture to this material");
             textureLoader.load(`/images/${imageSlug}`, (texture) => {
               texture.flipY = false; // This flips the texture vertically
@@ -113,7 +113,7 @@ const { imageSlug } = Astro.props;
     const scrollPercentage =
       window.scrollY /
       (document.documentElement.scrollHeight - window.innerHeight);
-    const rotationAngle = (scrollPercentage * Math.PI) / 2; // Rotate up to 90 degrees in the opposite direction
+    const rotationAngle = (scrollPercentage * Math.PI) / 6; // Rotate up to 30° (180°/6) degrees in the opposite direction
     scene.rotation.x = -rotationAngle;
   });
 
