@@ -22,7 +22,7 @@ export const currentBird = atom<BirdInfo | null>(null);
 export const nextBird = atom<BirdInfo | null>(null);
 export const daySchedule = map<Record<string, BirdInfo>>({});
 
-let timeOffset = 0;
+let serverTimeOffset = 0;
 
 async function syncWithServerTime() {
   try {
@@ -31,19 +31,21 @@ async function syncWithServerTime() {
     const serverTime = await response.json();
     const endTime = Date.now();
     const latency = (endTime - startTime) / 2;
-    timeOffset = serverTime - (endTime - latency);
-    console.log(`Time sync completed. Offset: ${timeOffset}ms`);
+    serverTimeOffset = serverTime - (endTime - latency);
+    console.log(
+      `Time sync completed. Server offset: ${serverTimeOffset}ms, Latency: ${latency}ms`
+    );
   } catch (error) {
     console.error("Failed to sync with server time:", error);
   }
 }
 
-function getAdjustedTime() {
-  return new Date(Date.now() + timeOffset);
+function getServerAdjustedTime() {
+  return new Date(Date.now() + serverTimeOffset);
 }
 
 function updateStore() {
-  const adjustedDate = getAdjustedTime();
+  const adjustedDate = getServerAdjustedTime();
   const { season, time } = getCurrentSeasonAndTime(adjustedDate);
 
   currentTime.set(time);
@@ -98,32 +100,33 @@ function updateStore() {
   );
 }
 
+function scheduleNextUpdate() {
+  const now = getServerAdjustedTime();
+  const msToNextMinute =
+    60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
+
+  console.log(`Scheduling next update in ${msToNextMinute}ms`);
+
+  setTimeout(() => {
+    updateStore();
+    scheduleNextUpdate();
+  }, msToNextMinute);
+}
+
 async function initializeTimeSync() {
   await syncWithServerTime();
   updateStore();
-
-  function scheduleNextUpdate() {
-    const now = getAdjustedTime();
-    const delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
-
-    console.log(`Scheduling next update in ${delay}ms`);
-
-    setTimeout(() => {
-      updateStore();
-      scheduleNextUpdate();
-    }, delay);
-  }
-
   scheduleNextUpdate();
 
-  // Resync with server every hour
-  setInterval(syncWithServerTime, 3600000);
+  // Resync with server every 5 minutes
+  setInterval(syncWithServerTime, 300000);
 }
 
-// Initialize time synchronization only in browser environment
 if (typeof window !== "undefined") {
-  console.log("Initializing time sync in browser environment");
+  console.log("Browser environment detected, initializing time sync");
   initializeTimeSync();
+} else {
+  console.log("Server environment detected, skipping time sync initialization");
 }
 
 // Development mode logging
