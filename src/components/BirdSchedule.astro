@@ -1,203 +1,54 @@
 ---
-import { getMergedBirdData } from "../utils/birdDataMerger";
-import { getCurrentSeasonAndTime, formatTime } from "../utils/timeUtils";
-import { seasons } from "../data/bird_data.json";
+// src/components/BirdSchedule.astro
+import { daySchedule, currentTime, currentBird } from "../stores/birdTimeStore";
 
-interface BirdScheduleItem {
-  slug: string;
-  name: string;
-  time: string;
-}
-
-const birds = getMergedBirdData();
-const { season, time: currentTime } = getCurrentSeasonAndTime();
-
-function getScheduleForDay(season: string): BirdScheduleItem[] {
-  return Object.entries(birds)
-    .filter(
-      ([_, bird]) =>
-        bird.seasons[season as keyof typeof bird.seasons]?.length > 0
-    )
-    .map(([slug, bird]) => ({
-      slug,
-      name: bird.name,
-      time: bird.seasons[season as keyof typeof bird.seasons][0],
-    }))
-    .sort((a, b) => a.time.localeCompare(b.time));
-}
-
-function getDisplaySchedule(
-  schedule: BirdScheduleItem[],
-  currentTime: string
-): { displaySchedule: BirdScheduleItem[]; isShowingTomorrow: boolean } {
-  const currentIndex = schedule.findIndex((bird) => bird.time > currentTime);
-  if (currentIndex === -1) {
-    // If all birds are in the past, show tomorrow's schedule
-    return { displaySchedule: schedule, isShowingTomorrow: true };
-  }
-  // Show birds from the current one onwards, plus the immediately previous bird
-  const displaySchedule =
-    currentIndex === 0
-      ? schedule
-      : [schedule[currentIndex - 1], ...schedule.slice(currentIndex)];
-  return { displaySchedule, isShowingTomorrow: false };
-}
-
-const daySchedule = getScheduleForDay(season);
-const { displaySchedule, isShowingTomorrow } = getDisplaySchedule(
-  daySchedule,
-  currentTime
-);
-
-function isCurrentBird(
-  birdTime: string,
-  nextBirdTime: string,
-  currentTime: string
-): boolean {
-  return (
-    currentTime >= birdTime &&
-    (nextBirdTime ? currentTime < nextBirdTime : true)
-  );
-}
+const schedule = Object.values(daySchedule.get());
+const time = currentTime.get();
+const current = currentBird.get();
 ---
 
 <div class="bird-schedule">
-  <h2>{isShowingTomorrow ? "Tomorrow's" : "Today's"} Schedule</h2>
+  <h2>Today's Schedule</h2>
   <ul id="schedule-list">
     {
-      displaySchedule.map((bird, index) => {
-        const nextBird = displaySchedule[index + 1];
-        const isCurrent = isCurrentBird(bird.time, nextBird?.time, currentTime);
-        return (
-          <li
-            data-time={bird.time}
-            class={isCurrent && !isShowingTomorrow ? "current" : ""}
-          >
-            <a href={`/birds/${bird.slug}`}>
-              {bird.time} - {bird.name}
-            </a>
-          </li>
-        );
-      })
+      schedule.map((bird) => (
+        <li class={bird.slug === current?.slug ? "current" : ""}>
+          <a href={`/birds/${bird.slug}`}>
+            {bird.startTime} - {bird.name}
+          </a>
+        </li>
+      ))
     }
   </ul>
 </div>
 
 <script>
-  import { getCurrentSeasonAndTime } from "../utils/timeUtils";
-  import { getMergedBirdData } from "../utils/birdDataMerger";
-
-  declare global {
-    interface Window {
-      overrideCurrentTime?: string;
-    }
-  }
-
-  interface BirdScheduleItem {
-    slug: string;
-    name: string;
-    time: string;
-  }
-
-  const birds = getMergedBirdData();
-
-  function getScheduleForDay(season: string): BirdScheduleItem[] {
-    return Object.entries(birds)
-      .filter(
-        ([_, bird]) =>
-          bird.seasons[season as keyof typeof bird.seasons]?.length > 0
-      )
-      .map(([slug, bird]) => ({
-        slug,
-        name: bird.name,
-        time: bird.seasons[season as keyof typeof bird.seasons][0],
-      }))
-      .sort((a, b) => a.time.localeCompare(b.time));
-  }
-
-  function getDisplaySchedule(
-    schedule: BirdScheduleItem[],
-    currentTime: string
-  ): { displaySchedule: BirdScheduleItem[]; isShowingTomorrow: boolean } {
-    const currentIndex = schedule.findIndex((bird) => bird.time > currentTime);
-    if (currentIndex === -1) {
-      // If all birds are in the past, show tomorrow's schedule
-      return { displaySchedule: schedule, isShowingTomorrow: true };
-    }
-    // Show birds from the current one onwards, plus the immediately previous bird
-    const displaySchedule =
-      currentIndex === 0
-        ? schedule
-        : [schedule[currentIndex - 1], ...schedule.slice(currentIndex)];
-    return { displaySchedule, isShowingTomorrow: false };
-  }
-
-  function isCurrentBird(
-    birdTime: string,
-    nextBirdTime: string,
-    currentTime: string
-  ): boolean {
-    return (
-      currentTime >= birdTime &&
-      (nextBirdTime ? currentTime < nextBirdTime : true)
-    );
-  }
+  import {
+    daySchedule,
+    currentTime,
+    currentBird,
+  } from "../stores/birdTimeStore";
 
   function updateSchedule() {
-    const { season, time } = getCurrentSeasonAndTime();
     const scheduleList = document.getElementById("schedule-list");
-    const scheduleTitle = document.querySelector(".bird-schedule h2");
-    if (!scheduleList || !scheduleTitle) return;
+    if (!scheduleList) return;
 
-    const currentTime = window.overrideCurrentTime || time.slice(0, 5);
+    const schedule = Object.values(daySchedule.get());
+    const current = currentBird.get();
 
-    const daySchedule = getScheduleForDay(season);
-    const { displaySchedule, isShowingTomorrow } = getDisplaySchedule(
-      daySchedule,
-      currentTime
-    );
-
-    scheduleTitle.textContent = isShowingTomorrow
-      ? "Tomorrow's Schedule"
-      : "Today's Schedule";
-
-    // Clear the existing list
-    scheduleList.innerHTML = "";
-
-    // Populate the list with birds
-    displaySchedule.forEach((bird, index) => {
-      const li = document.createElement("li");
-      li.dataset.time = bird.time;
-      const nextBird = displaySchedule[index + 1];
-      if (
-        isCurrentBird(bird.time, nextBird?.time, currentTime) &&
-        !isShowingTomorrow
-      ) {
-        li.classList.add("current");
-      }
-      li.innerHTML = `<a href="/birds/${bird.slug}">${bird.time} - ${bird.name}</a>`;
-      scheduleList.appendChild(li);
-    });
+    scheduleList.innerHTML = schedule
+      .map(
+        (bird) => `
+      <li class="${bird.slug === current?.slug ? "current" : ""}">
+        <a href="/birds/${bird.slug}">
+          ${bird.startTime} - ${bird.name}
+        </a>
+      </li>
+    `
+      )
+      .join("");
   }
 
-  // For testing: override current time
-  // Uncomment and adjust the time as needed for testing
-  // if (import.meta.env.DEV) {
-  //   window.overrideCurrentTime = "15:00";
-  // }
-
-  // Update every minute
-  setInterval(updateSchedule, 60000);
-
-  // Initial update
-  updateSchedule();
+  daySchedule.subscribe(updateSchedule);
+  currentBird.subscribe(updateSchedule);
 </script>
-
-<style is:global>
-  .current {
-    font-weight: bold;
-    a {
-      color: white;
-    }
-  }
-</style>

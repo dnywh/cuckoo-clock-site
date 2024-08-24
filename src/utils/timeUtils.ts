@@ -15,11 +15,20 @@ export function getCurrentSeasonAndTime() {
   return {
     season: currentSeason,
     time: formatTime(canberraDate),
-    date: formatDate(canberraDate),
   };
 }
 
-export function formatTime(date: Date): string {
+export function formatTime(input: Date | string): string {
+  let date: Date;
+  if (typeof input === "string") {
+    // If input is a string, assume it's in HH:MM format
+    const [hours, minutes] = input.split(":").map(Number);
+    date = new Date();
+    date.setHours(hours, minutes);
+  } else {
+    date = input;
+  }
+
   return date.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",

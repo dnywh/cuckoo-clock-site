@@ -1,49 +1,26 @@
 ---
-import {
-  getCurrentSeasonAndTime,
-  formatTime,
-  formatDate,
-} from "../utils/timeUtils";
+// src/components/Timestamp.astro
+import { currentTime } from "../stores/birdTimeStore";
+import { formatTime, formatDate } from "../utils/timeUtils";
 
-const { time, date } = getCurrentSeasonAndTime();
+const time = currentTime.get();
+const date = new Date();
 ---
 
-<div class="timestamp">
-  <p>
-    <span id="time">{time}</span> ∙ <span id="date">{date}</span> ∙ Canberra, ACT
-  </p>
+<div id="timestamp">
+  <span id="time">{formatTime(time)}</span> ∙ <span id="date"
+    >{formatDate(date)}</span
+  >
 </div>
 
 <script>
+  import { currentTime } from "../stores/birdTimeStore";
   import { formatTime, formatDate } from "../utils/timeUtils";
 
-  function updateTimestamp(): void {
-    const now = new Date();
+  currentTime.subscribe((time) => {
     const timeElement = document.getElementById("time");
     const dateElement = document.getElementById("date");
-
-    if (timeElement) {
-      timeElement.textContent = formatTime(now);
-    }
-
-    if (dateElement) {
-      const newDate = formatDate(now);
-      if (newDate !== dateElement.textContent) {
-        if (import.meta.env.DEV) {
-          console.log("New date:", newDate);
-        }
-        dateElement.textContent = newDate;
-      }
-    }
-
-    // Calculate time until next minute
-    const delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
-    if (import.meta.env.DEV) {
-      console.log("Time until next minute:", delay);
-    }
-    setTimeout(updateTimestamp, delay);
-  }
-
-  // Start the update cycle
-  updateTimestamp();
+    if (timeElement) timeElement.textContent = formatTime(time);
+    if (dateElement) dateElement.textContent = formatDate(new Date());
+  });
 </script>
