@@ -102,15 +102,19 @@ async function initializeTimeSync() {
   await syncWithServerTime();
   updateStore();
 
-  const now = getAdjustedTime();
-  const delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
+  function scheduleNextUpdate() {
+    const now = getAdjustedTime();
+    const delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
 
-  console.log(`Initial update complete. Next update in ${delay}ms`);
+    console.log(`Scheduling next update in ${delay}ms`);
 
-  setTimeout(() => {
-    updateStore();
-    setInterval(updateStore, 60000);
-  }, delay);
+    setTimeout(() => {
+      updateStore();
+      scheduleNextUpdate();
+    }, delay);
+  }
+
+  scheduleNextUpdate();
 
   // Resync with server every hour
   setInterval(syncWithServerTime, 3600000);
