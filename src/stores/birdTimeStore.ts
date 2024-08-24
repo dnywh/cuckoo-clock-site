@@ -26,11 +26,13 @@ let timeOffset = 0;
 
 async function syncWithServerTime() {
   try {
+    const startTime = Date.now();
     const response = await fetch("/api/server-time");
     const serverTime = await response.json();
-    const clientTime = Date.now();
-    timeOffset = serverTime - clientTime;
-    console.log(`Time offset: ${timeOffset}ms`);
+    const endTime = Date.now();
+    const latency = (endTime - startTime) / 2;
+    timeOffset = serverTime - (endTime - latency);
+    console.log(`Time sync completed. Offset: ${timeOffset}ms`);
   } catch (error) {
     console.error("Failed to sync with server time:", error);
   }
@@ -47,14 +49,9 @@ function updateStore() {
   currentTime.set(time);
   currentSeason.set(season);
 
-  console.log("Current local time:", time);
-  console.log("Current season:", season);
-
   const birds = getMergedBirdData();
   const quietStart = quietHours[season].start;
   const quietEnd = quietHours[season].end;
-
-  console.log("Quiet hours:", { quietStart, quietEnd });
 
   const schedule: BirdInfo[] = Object.entries(birds)
     .filter(
@@ -63,9 +60,6 @@ function updateStore() {
     .map(([slug, bird]) => {
       const startTime = formatTime(bird.seasons[season][0]);
       const endTime = addHour(bird.seasons[season][0]);
-      console.log(
-        `Mapping ${bird.name}: startTime = ${startTime}, endTime = ${endTime}`
-      );
       return { slug, name: bird.name, startTime, endTime };
     })
     .filter((bird) => {
@@ -74,12 +68,9 @@ function updateStore() {
           parseTime(bird.startTime) < parseTime(quietStart)) ||
         (parseTime(bird.endTime) > parseTime(quietEnd) &&
           parseTime(bird.endTime) <= parseTime(quietStart));
-      console.log(`Filtering ${bird.name}: is active = ${isActive}`);
       return isActive;
     })
     .sort((a, b) => parseTime(a.startTime) - parseTime(b.startTime));
-
-  console.log("Final schedule:", schedule);
 
   daySchedule.set(
     Object.fromEntries(schedule.map((bird) => [bird.slug, bird]))
@@ -95,14 +86,16 @@ function updateStore() {
     ) || null;
 
   currentBird.set(currentBirdInfo);
-  console.log("Current bird:", currentBirdInfo);
 
   const nextBirdInfo =
     schedule.find((bird) => parseTime(bird.startTime) > currentTimeMinutes) ||
     schedule[0];
 
   nextBird.set(nextBirdInfo);
-  console.log("Next bird:", nextBirdInfo);
+
+  console.log(
+    `Store updated. Time: ${time}, Season: ${season}, Current Bird: ${currentBirdInfo?.name}, Next Bird: ${nextBirdInfo?.name}`
+  );
 }
 
 async function initializeTimeSync() {
@@ -111,6 +104,8 @@ async function initializeTimeSync() {
 
   const now = getAdjustedTime();
   const delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
+
+  console.log(`Initial update complete. Next update in ${delay}ms`);
 
   setTimeout(() => {
     updateStore();
@@ -121,12 +116,17 @@ async function initializeTimeSync() {
   setInterval(syncWithServerTime, 3600000);
 }
 
-// Initialize time synchronization
-initializeTimeSync();
+// Initialize time synchronization only in browser environment
+if (typeof window !== "undefined") {
+  console.log("Initializing time sync in browser environment");
+  initializeTimeSync();
+}
 
+// Development mode logging
 if (import.meta.env.DEV) {
-  // Log updates in development mode
   currentTime.listen((time) => console.log("Current time updated:", time));
-  currentBird.listen((bird) => console.log("Current bird updated:", bird));
-  nextBird.listen((bird) => console.log("Next bird updated:", bird));
+  currentBird.listen((bird) =>
+    console.log("Current bird updated:", bird?.name)
+  );
+  nextBird.listen((bird) => console.log("Next bird updated:", bird?.name));
 }
