@@ -22,31 +22,13 @@ export const currentBird = atom<BirdInfo | null>(null);
 export const nextBird = atom<BirdInfo | null>(null);
 export const daySchedule = map<Record<string, BirdInfo>>({});
 
-let serverTimeOffset = 0;
-
-async function syncWithServerTime() {
-  try {
-    const startTime = Date.now();
-    const response = await fetch("/api/server-time");
-    const serverTime = await response.json();
-    const endTime = Date.now();
-    const latency = (endTime - startTime) / 2;
-    serverTimeOffset = serverTime - (endTime - latency);
-    console.log(
-      `Time sync completed. Server offset: ${serverTimeOffset}ms, Latency: ${latency}ms`
-    );
-  } catch (error) {
-    console.error("Failed to sync with server time:", error);
-  }
-}
-
-function getServerAdjustedTime() {
-  return new Date(Date.now() + serverTimeOffset);
+function getCurrentTime() {
+  return new Date();
 }
 
 function updateStore() {
-  const adjustedDate = getServerAdjustedTime();
-  const { season, time } = getCurrentSeasonAndTime(adjustedDate);
+  const now = getCurrentTime();
+  const { season, time } = getCurrentSeasonAndTime(now);
 
   currentTime.set(time);
   currentSeason.set(season);
@@ -101,7 +83,7 @@ function updateStore() {
 }
 
 function scheduleNextUpdate() {
-  const now = getServerAdjustedTime();
+  const now = getCurrentTime();
   const msToNextMinute =
     60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
 
@@ -113,13 +95,9 @@ function scheduleNextUpdate() {
   }, msToNextMinute);
 }
 
-async function initializeTimeSync() {
-  await syncWithServerTime();
+function initializeTimeSync() {
   updateStore();
   scheduleNextUpdate();
-
-  // Resync with server every 5 minutes
-  setInterval(syncWithServerTime, 300000);
 }
 
 if (typeof window !== "undefined") {
