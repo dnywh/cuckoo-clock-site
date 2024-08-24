@@ -182,7 +182,9 @@ function isCurrentBird(
 
   // For testing: override current time
   // Uncomment and adjust the time as needed for testing
-  window.overrideCurrentTime = "15:00";
+  // if (import.meta.env.DEV) {
+  //   window.overrideCurrentTime = "15:00";
+  // }
 
   // Update every minute
   setInterval(updateSchedule, 60000);
