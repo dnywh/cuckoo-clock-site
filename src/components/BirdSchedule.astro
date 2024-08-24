@@ -1,14 +1,20 @@
 ---
-// src/components/BirdSchedule.astro
-import { daySchedule, currentTime, currentBird } from "../stores/birdTimeStore";
+import {
+  daySchedule,
+  currentTime,
+  currentBird,
+  nextBird,
+} from "../stores/birdTimeStore";
 
 const schedule = Object.values(daySchedule.get());
 const time = currentTime.get();
 const current = currentBird.get();
+const next = nextBird.get();
 ---
 
 <div class="bird-schedule">
   <h2>Today's Schedule</h2>
+  <p id="current-time">Current Time: {time}</p>
   <ul id="schedule-list">
     {
       schedule.map((bird) => (
@@ -20,6 +26,20 @@ const current = currentBird.get();
       ))
     }
   </ul>
+  <p id="current-bird">
+    {
+      current
+        ? `Current bird: ${current.name} (until ${current.endTime})`
+        : "No bird currently active"
+    }
+  </p>
+  <p id="next-bird">
+    {
+      next
+        ? `Next up: ${next.name} at ${next.startTime}`
+        : "No more birds scheduled for today"
+    }
+  </p>
 </div>
 
 <script>
@@ -27,28 +47,56 @@ const current = currentBird.get();
     daySchedule,
     currentTime,
     currentBird,
+    nextBird,
   } from "../stores/birdTimeStore";
 
   function updateSchedule() {
     const scheduleList = document.getElementById("schedule-list");
-    if (!scheduleList) return;
+    const currentTimeElement = document.getElementById("current-time");
+    const currentBirdElement = document.getElementById("current-bird");
+    const nextBirdElement = document.getElementById("next-bird");
+
+    if (
+      !scheduleList ||
+      !currentTimeElement ||
+      !currentBirdElement ||
+      !nextBirdElement
+    )
+      return;
 
     const schedule = Object.values(daySchedule.get());
+    const time = currentTime.get();
     const current = currentBird.get();
+    const next = nextBird.get();
+
+    currentTimeElement.textContent = `Current Time: ${time}`;
 
     scheduleList.innerHTML = schedule
       .map(
         (bird) => `
-      <li class="${bird.slug === current?.slug ? "current" : ""}">
-        <a href="/birds/${bird.slug}">
-          ${bird.startTime} - ${bird.name}
-        </a>
-      </li>
-    `
+        <li class="${bird.slug === current?.slug ? "current" : ""}">
+          <a href="/birds/${bird.slug}">
+            ${bird.startTime} - ${bird.name}
+          </a>
+        </li>
+      `
       )
       .join("");
+
+    currentBirdElement.textContent = current
+      ? `Current bird: ${current.name} (until ${current.endTime})`
+      : "No bird currently active";
+
+    nextBirdElement.textContent = next
+      ? `Next up: ${next.name} at ${next.startTime}`
+      : "No more birds scheduled for today";
   }
 
   daySchedule.subscribe(updateSchedule);
+  currentTime.subscribe(updateSchedule);
   currentBird.subscribe(updateSchedule);
+  nextBird.subscribe(updateSchedule);
+
+  // Initial update
+  updateSchedule();
 </script>

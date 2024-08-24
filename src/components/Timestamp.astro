@@ -1,26 +1,48 @@
 ---
 // src/components/Timestamp.astro
 import { currentTime } from "../stores/birdTimeStore";
-import { formatTime, formatDate } from "../utils/timeUtils";
+import { formatDate, getCurrentSeasonAndTime } from "../utils/timeUtils";
+import { TIME_ZONE } from "../config";
 
-const time = currentTime.get();
-const date = new Date();
+const { time } = getCurrentSeasonAndTime();
+console.log("Server-side time:", time); // Debug log
+const initialTime = time;
+const initialDate = formatDate(
+  new Date().toLocaleString("en-US", { timeZone: TIME_ZONE })
+);
 ---
 
 <div id="timestamp">
-  <span id="time">{formatTime(time)}</span> ∙ <span id="date"
-    >{formatDate(date)}</span
-  >
+  <p>
+    <span id="time">{initialTime}</span> ∙ <span id="date">{initialDate}</span>
+  </p>
 </div>
 
 <script>
   import { currentTime } from "../stores/birdTimeStore";
-  import { formatTime, formatDate } from "../utils/timeUtils";
+  import { formatDate } from "../utils/timeUtils";
+  import { TIME_ZONE } from "../config";
 
-  currentTime.subscribe((time) => {
+  function updateTimestamp() {
+    const currentTimeValue = currentTime.get();
+    console.log("Client-side current time:", currentTimeValue); // Debug log
+
     const timeElement = document.getElementById("time");
     const dateElement = document.getElementById("date");
-    if (timeElement) timeElement.textContent = formatTime(time);
-    if (dateElement) dateElement.textContent = formatDate(new Date());
-  });
+
+    if (timeElement) {
+      timeElement.textContent = currentTimeValue;
+    }
+
+    if (dateElement) {
+      dateElement.textContent = formatDate(
+        new Date().toLocaleString("en-US", { timeZone: TIME_ZONE })
+      );
+    }
+  }
+
+  currentTime.subscribe(updateTimestamp);
+
+  // Initial update
+  updateTimestamp();
 </script>
