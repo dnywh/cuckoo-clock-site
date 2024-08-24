@@ -29,14 +29,18 @@ const { time, date } = getCurrentSeasonAndTime();
     if (dateElement) {
       const newDate = formatDate(now);
       if (newDate !== dateElement.textContent) {
-        console.log("New date:", newDate);
+        if (import.meta.env.DEV) {
+          console.log("New date:", newDate);
+        }
         dateElement.textContent = newDate;
       }
     }
 
     // Calculate time until next minute
     const delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
-    console.log("Time until next minute:", delay);
+    if (import.meta.env.DEV) {
+      console.log("Time until next minute:", delay);
+    }
     setTimeout(updateTimestamp, delay);
   }
 
