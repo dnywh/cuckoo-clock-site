@@ -21,6 +21,9 @@ const { season } = getCurrentSeasonAndTime();
 if (!bird) {
   return Astro.redirect("/404"); // TODO build 404 page
 }
+
+// This line tells Astro to prerender this page
+export const prerender = true;
 ---
 
 <Layout title={bird.name}>

@@ -22,9 +22,27 @@ export const currentBird = atom<BirdInfo | null>(null);
 export const nextBird = atom<BirdInfo | null>(null);
 export const daySchedule = map<Record<string, BirdInfo>>({});
 
+let timeOffset = 0;
+
+async function syncWithServerTime() {
+  try {
+    const response = await fetch("/api/server-time");
+    const serverTime = await response.json();
+    const clientTime = Date.now();
+    timeOffset = serverTime - clientTime;
+    console.log(`Time offset: ${timeOffset}ms`);
+  } catch (error) {
+    console.error("Failed to sync with server time:", error);
+  }
+}
+
+function getAdjustedTime() {
+  return new Date(Date.now() + timeOffset);
+}
+
 function updateStore() {
-  const birds = getMergedBirdData();
-  const { season, time } = getCurrentSeasonAndTime();
+  const adjustedDate = getAdjustedTime();
+  const { season, time } = getCurrentSeasonAndTime(adjustedDate);
 
   currentTime.set(time);
   currentSeason.set(season);
@@ -32,6 +50,7 @@ function updateStore() {
   console.log("Current local time:", time);
   console.log("Current season:", season);
 
+  const birds = getMergedBirdData();
   const quietStart = quietHours[season].start;
   const quietEnd = quietHours[season].end;
 
@@ -86,11 +105,24 @@ function updateStore() {
   console.log("Next bird:", nextBirdInfo);
 }
 
-// Initial update
-updateStore();
+async function initializeTimeSync() {
+  await syncWithServerTime();
+  updateStore();
 
-// Update every minute
-setInterval(updateStore, 60000);
+  const now = getAdjustedTime();
+  const delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
+
+  setTimeout(() => {
+    updateStore();
+    setInterval(updateStore, 60000);
+  }, delay);
+
+  // Resync with server every hour
+  setInterval(syncWithServerTime, 3600000);
+}
+
+// Initialize time synchronization
+initializeTimeSync();
 
 if (import.meta.env.DEV) {
   // Log updates in development mode

@@ -6,6 +6,6 @@ export default defineConfig({
     image: {
         domains: ["inaturalist-open-data.s3.amazonaws.com", "flickr.com"]
     },
-    output: "server",
+    output: "hybrid",
     adapter: netlify()
 });

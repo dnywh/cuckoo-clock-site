@@ -42,6 +42,13 @@ const next = nextBird.get();
   </p>
 </div>
 
+<!-- Must use global as affected DOM elements are dynamically inserted -->
+<style is:global>
+  li.current {
+    background-color: lightyellow;
+  }
+</style>
+
 <script>
   import {
     daySchedule,
