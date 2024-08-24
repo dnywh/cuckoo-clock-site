@@ -1,0 +1,45 @@
+---
+import {
+  getCurrentSeasonAndTime,
+  formatTime,
+  formatDate,
+} from "../utils/timeUtils";
+
+const { time, date } = getCurrentSeasonAndTime();
+---
+
+<div class="timestamp">
+  <p>
+    <span id="time">{time}</span> ∙ <span id="date">{date}</span> ∙ Canberra, ACT
+  </p>
+</div>
+
+<script>
+  import { formatTime, formatDate } from "../utils/timeUtils";
+
+  function updateTimestamp(): void {
+    const now = new Date();
+    const timeElement = document.getElementById("time");
+    const dateElement = document.getElementById("date");
+
+    if (timeElement) {
+      timeElement.textContent = formatTime(now);
+    }
+
+    if (dateElement) {
+      const newDate = formatDate(now);
+      if (newDate !== dateElement.textContent) {
+        console.log("New date:", newDate);
+        dateElement.textContent = newDate;
+      }
+    }
+
+    // Calculate time until next minute
+    const delay = 60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
+    console.log("Time until next minute:", delay);
+    setTimeout(updateTimestamp, delay);
+  }
+
+  // Start the update cycle
+  updateTimestamp();
+</script>

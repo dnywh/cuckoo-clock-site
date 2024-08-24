@@ -1,28 +1,37 @@
-// src/utils/timeUtils.js
-import { seasons } from '../data/bird_data.json';
+// src/utils/timeUtils.ts
+import { seasons } from "../data/bird_data.json";
 
 export function getCurrentSeasonAndTime() {
-    // Create a date object for Canberra time
-    const canberraDate = new Date(new Date().toLocaleString("en-US", { timeZone: "Australia/Canberra" }));
+  const canberraDate = new Date(
+    new Date().toLocaleString("en-US", { timeZone: "Australia/Canberra" })
+  );
 
-    const month = canberraDate.getMonth() + 1; // getMonth() returns 0-11
-    const hours = canberraDate.getHours();
-    const minutes = canberraDate.getMinutes();
+  const month = canberraDate.getMonth() + 1;
+  const currentSeason =
+    Object.entries(seasons).find(([_, data]) =>
+      data.months.includes(month)
+    )?.[0] || "unknown";
 
-    // Determine the current season
-    let currentSeason;
-    for (const [season, data] of Object.entries(seasons)) {
-        if (data.months.includes(month)) {
-            currentSeason = season;
-            break;
-        }
-    }
+  return {
+    season: currentSeason,
+    time: formatTime(canberraDate),
+    date: formatDate(canberraDate),
+  };
+}
 
-    // Format the current time as HH:MM
-    const currentTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+export function formatTime(date: Date): string {
+  return date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "Australia/Canberra",
+  });
+}
 
-    // Format the current date as 'Sept 28'
-    const currentDate = canberraDate.toLocaleString('en-US', { month: 'short', day: 'numeric' });
-
-    return { season: currentSeason, time: currentTime, date: currentDate };
+export function formatDate(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    timeZone: "Australia/Canberra",
+  });
 }

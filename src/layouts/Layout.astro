@@ -1,5 +1,6 @@
 ---
 import { getCurrentSeasonAndTime } from "../utils/timeUtils";
+import Timestamp from "../components/Timestamp.astro";
 
 interface Props {
   title: string;
@@ -26,7 +27,7 @@ const { season, time, date } = getCurrentSeasonAndTime();
         <a href="/now">Now</a>
         <a href="/birds">All</a>
       </nav>
-      <p>{time} ∙ {date} ∙ Canberra, ACT</p>
+      <Timestamp />
     </header>
     <slot />
   </body>
