@@ -7,11 +7,14 @@ const { imageSlug } = Astro.props;
 ---
 
 <div id="scene-container" data-image-slug={imageSlug}></div>
+
 <script>
   import * as THREE from "three";
   import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-  const sceneContainer = document.getElementById("scene-container");
+  const sceneContainer = document.getElementById(
+    "scene-container"
+  ) as HTMLDivElement;
   const imageSlug = sceneContainer.dataset.imageSlug;
   console.log("Image slug:", imageSlug);
 
@@ -23,13 +26,11 @@ const { imageSlug } = Astro.props;
   sceneContainer.appendChild(renderer.domElement);
 
   // Function to update sizes
-  function updateSizes() {
+  function updateSizes(): void {
     const width = sceneContainer.clientWidth;
     const height = sceneContainer.clientHeight;
-
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
-
     renderer.setSize(width, height);
   }
 
@@ -53,7 +54,7 @@ const { imageSlug } = Astro.props;
 
       // Log material information and apply texture
       gltf.scene.traverse((child) => {
-        if (child.isMesh) {
+        if (child instanceof THREE.Mesh) {
           console.log(`Mesh name: ${child.name}`);
 
           // Ensure the material is MeshStandardMaterial
@@ -64,11 +65,11 @@ const { imageSlug } = Astro.props;
             });
           }
 
-          console.log(`  Material name: ${child.material.name}`);
+          console.log(` Material name: ${child.material.name}`);
 
           // Apply texture to specific material (e.g., 'testFront')
-          if (child.material.name === "screen") {
-            console.log("  Applying texture to this material");
+          if (child.material.name === "screen" && imageSlug) {
+            console.log(" Applying texture to this material");
             textureLoader.load(`/images/${imageSlug}`, (texture) => {
               texture.flipY = false; // This flips the texture vertically
               child.material.map = texture;
@@ -99,7 +100,7 @@ const { imageSlug } = Astro.props;
   scene.add(pointLight);
 
   // Render loop
-  function animate() {
+  function animate(): void {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
   }
@@ -122,6 +123,7 @@ const { imageSlug } = Astro.props;
     window.dispatchEvent(new Event("resize"));
   }, 100);
 </script>
+
 <style>
   #scene-container {
     width: 100%;
