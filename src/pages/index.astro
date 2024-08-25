@@ -1,17 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import ThreeScene from "../components/ThreeScene.astro";
 import BirdSchedule from "../components/BirdSchedule.astro";
-
-import { getMergedBirdData } from "../utils/birdDataMerger";
-
-const mergedBirdData = getMergedBirdData();
 ---
 
 <Layout title="Cuckoo Clock">
   <main>
     <h1>Cuckoo Clock</h1>
-
+    <ThreeScene
+      imageSlug=`galah.jpg`
+      cameraPosition={{ x: 0, y: -100, z: 100 }}
+      cameraRotation={{ x: 0, y: 0, z: 0 }}
+    />
     <BirdSchedule />
   </main>
 </Layout>
