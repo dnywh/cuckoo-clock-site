@@ -3,13 +3,13 @@ import { TIME_ZONE } from "../config";
 
 export function getCurrentSeasonAndTime() {
   const now = new Date();
-  console.log("1. Current UTC time:", now.toUTCString());
+  // console.log("1. Current UTC time:", now.toUTCString());
 
   const localString = now.toLocaleString("en-US", { timeZone: TIME_ZONE });
-  console.log("2. Local time string:", localString);
+  // console.log("2. Local time string:", localString);
 
   const [datePart, timePart] = localString.split(", ");
-  console.log("3. Local time parts:", { datePart, timePart });
+  // console.log("3. Local time parts:", { datePart, timePart });
 
   const month = new Date(localString).getMonth() + 1;
   const currentSeason =
@@ -18,7 +18,7 @@ export function getCurrentSeasonAndTime() {
     )?.[0] || "unknown";
 
   const formattedTime = formatTime(timePart);
-  console.log("4. Formatted local time:", formattedTime);
+  // console.log("4. Formatted local time:", formattedTime);
 
   return {
     season: currentSeason,

@@ -16,7 +16,7 @@ const { imageSlug } = Astro.props;
     "scene-container"
   ) as HTMLDivElement;
   const imageSlug = sceneContainer.dataset.imageSlug;
-  console.log("Image slug:", imageSlug);
+  // console.log("Image slug:", imageSlug);
 
   // Set up scene
   const scene = new THREE.Scene();
@@ -49,13 +49,13 @@ const { imageSlug } = Astro.props;
   loader.load(
     "/models/test-08.glb",
     (gltf) => {
-      console.log("GLTF model loaded successfully");
+      // console.log("GLTF model loaded successfully");
       scene.add(gltf.scene);
 
       // Log material information and apply texture
       gltf.scene.traverse((child) => {
         if (child instanceof THREE.Mesh) {
-          console.log(`Mesh name: ${child.name}`);
+          // console.log(`Mesh name: ${child.name}`);
 
           // Ensure the material is MeshStandardMaterial
           if (!(child.material instanceof THREE.MeshStandardMaterial)) {
@@ -65,11 +65,11 @@ const { imageSlug } = Astro.props;
             });
           }
 
-          console.log(` Material name: ${child.material.name}`);
+          // console.log(` Material name: ${child.material.name}`);
 
           // Apply texture to specific material (e.g., 'testFront')
           if (child.material.name === "screen" && imageSlug) {
-            console.log(" Applying texture to this material");
+            // console.log(" Applying texture to this material");
             textureLoader.load(`/images/${imageSlug}`, (texture) => {
               texture.flipY = false; // This flips the texture vertically
               child.material.map = texture;
@@ -80,7 +80,7 @@ const { imageSlug } = Astro.props;
       });
     },
     (xhr) => {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      // console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
     },
     (error) => {
       console.error("An error happened", error);

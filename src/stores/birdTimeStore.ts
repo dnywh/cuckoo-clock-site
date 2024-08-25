@@ -87,7 +87,7 @@ function scheduleNextUpdate() {
   const msToNextMinute =
     60000 - (now.getSeconds() * 1000 + now.getMilliseconds());
 
-  console.log(`Scheduling next update in ${msToNextMinute}ms`);
+  // console.log(`Scheduling next update in ${msToNextMinute}ms`);
 
   setTimeout(() => {
     updateStore();
@@ -101,10 +101,10 @@ function initializeTimeSync() {
 }
 
 if (typeof window !== "undefined") {
-  console.log("Browser environment detected, initializing time sync");
+  // console.log("Browser environment detected, initializing time sync");
   initializeTimeSync();
 } else {
-  console.log("Server environment detected, skipping time sync initialization");
+  // console.log("Server environment detected, skipping time sync initialization");
 }
 
 // Development mode logging

@@ -7,6 +7,10 @@ import { Image } from "astro:assets";
 import { getMergedBirdData } from "../../utils/birdDataMerger";
 import { getCurrentSeasonAndTime } from "../../utils/timeUtils";
 
+// This function tells Astro that the collection should be built statically
+// Something like...
+// export const prerender = false;
+// Won't work because of this function
 export function getStaticPaths() {
   const mergedBirdData = getMergedBirdData();
   return Object.keys(mergedBirdData).map((slug) => ({ params: { slug } }));
@@ -21,9 +25,6 @@ const { season } = getCurrentSeasonAndTime();
 if (!bird) {
   return Astro.redirect("/404"); // TODO build 404 page
 }
-
-// This line tells Astro to prerender this page (statically)
-// export const prerender = true;
 ---
 
 <Layout title={bird.name}>

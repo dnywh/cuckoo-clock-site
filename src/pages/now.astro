@@ -1,14 +1,19 @@
 ---
 // src/pages/now.astro
+import Layout from "../layouts/Layout.astro";
+
 import { currentBird } from "../stores/birdTimeStore";
 
 const bird = currentBird.get();
 
-if (bird) {
-  return Astro.redirect(`/birds/${bird.slug}`);
-} else {
-  return Astro.redirect("/");
-}
+// We're not using Astro.redirect because of the ugly white flash
+// if (bird) {
+//   return Astro.redirect(`/birds/${bird.slug}`);
+// }
 ---
 
-<div>Redirecting...</div>
+<Layout title="Now">
+  <main>
+    <div>Redirecting...</div>
+  </main>
+</Layout>

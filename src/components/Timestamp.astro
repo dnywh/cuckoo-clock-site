@@ -5,7 +5,7 @@ import { formatDate, getCurrentSeasonAndTime } from "../utils/timeUtils";
 import { TIME_ZONE } from "../config";
 
 const { time } = getCurrentSeasonAndTime();
-console.log("Server-side time:", time); // Debug log
+// console.log("Server-side time:", time); // Debug log
 const initialTime = time;
 const initialDate = formatDate(
   new Date().toLocaleString("en-US", { timeZone: TIME_ZONE })
@@ -25,7 +25,7 @@ const initialDate = formatDate(
 
   function updateTimestamp() {
     const currentTimeValue = currentTime.get();
-    console.log("Client-side current time:", currentTimeValue); // Debug log
+    // console.log("Client-side current time:", currentTimeValue); // Debug log
 
     const timeElement = document.getElementById("time");
     const dateElement = document.getElementById("date");
