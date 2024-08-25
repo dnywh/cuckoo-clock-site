@@ -1,11 +1,8 @@
 ---
 // src/pages/now.astro
 import Layout from "../layouts/Layout.astro";
-
 import { currentBird } from "../stores/birdTimeStore";
-
-const bird = currentBird.get();
-
+// const bird = currentBird.get();
 // We're not using Astro.redirect because of the ugly white flash
 // if (bird) {
 //   return Astro.redirect(`/birds/${bird.slug}`);
@@ -14,6 +11,44 @@ const bird = currentBird.get();
 
 <Layout title="Now">
   <main>
-    <div>Redirecting...</div>
+    <h1>Now</h1>
+    <div id="birdInfo">Loading bird...</div>
   </main>
 </Layout>
+
+<style>
+  #birdInfo {
+    margin-top: 20px;
+    /* opacity: 0; */
+  }
+</style>
+
+<script>
+  import { currentBird, currentTime } from "../stores/birdTimeStore";
+
+  function updateBirdInfo() {
+    const birdInfoElement = document.getElementById("birdInfo");
+    const bird = currentBird.get();
+
+    if (bird) {
+      birdInfoElement.innerHTML = `Current bird: ${bird.name}`;
+      // Redirect after a short delay
+      setTimeout(() => {
+        window.location.href = `/birds/${bird.slug}`;
+      }, 3000);
+    } else {
+      // Notify after a short delay
+      setTimeout(() => {
+        birdInfoElement.textContent =
+          "No active bird right now. It's quiet hours.";
+      }, 2000);
+    }
+  }
+
+  // Initial update
+  updateBirdInfo();
+
+  // Update when store values change
+  currentBird.listen(() => updateBirdInfo());
+  currentTime.listen(() => updateBirdInfo());
+</script>

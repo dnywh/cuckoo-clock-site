@@ -1,4 +1,6 @@
 ---
+// import { ViewTransitions } from "astro:transitions";
+
 import { getCurrentSeasonAndTime } from "../utils/timeUtils";
 import Timestamp from "../components/Timestamp.astro";
 
@@ -7,7 +9,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-const { season, time, date } = getCurrentSeasonAndTime();
 ---
 
 <!doctype html>
@@ -19,6 +20,7 @@ const { season, time, date } = getCurrentSeasonAndTime();
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <!-- <ViewTransitions /> -->
   </head>
   <body>
     <header>

@@ -29,7 +29,14 @@ if (!bird) {
 
 <Layout title={bird.name}>
   <main>
-    <ThreeScene imageSlug=`${bird.slug}.jpg` />
+    <!-- <ThreeScene imageSlug=`${bird.slug}.jpg` /> -->
+
+    <ThreeScene
+      imageSlug=`${bird.slug}.jpg`
+      cameraPosition={{ x: 0, y: -100, z: 100 }}
+      cameraRotation={{ x: 0, y: 0, z: 0 }}
+    />
+
     <h1>{bird.name}</h1>
     <p>Scientific Name: {bird.scientificName}</p>
     <p>Habitat: {bird.habitat}</p>

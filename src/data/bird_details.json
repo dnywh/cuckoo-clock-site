@@ -22,16 +22,6 @@
     "description": "The laughing kookaburra is a large terrestrial tree kingfisher native to eastern Australia.",
     "habitat": "Woodland territories, open eucalyptus forests, and park lands.",
     "diet": "Carnivorous, eating mice, snakes, insects, small reptiles, and the young of other birds.",
-    "images": [
-      {
-        "url": "/images/laughing-kookaburra/laughing-kookaburra.jpg",
-        "caption": "Laughing Kookaburra"
-      },
-      {
-        "url": "/images/laughing-kookaburra/perched.jpg",
-        "caption": "Laughing Kookaburra perched on a branch"
-      }
-    ],
     "funFacts": [
       "Known for its distinctive laughing call",
       "Can live for up to 20 years in the wild"
@@ -42,16 +32,6 @@
     "description": "The superb fairywren is a passerine bird in the Australasian wren family, Maluridae.",
     "habitat": "Found in almost any area that has at least a little dense undergrowth for shelter.",
     "diet": "Mainly insectivorous, feeding on a wide range of small creatures.",
-    "images": [
-      {
-        "url": "/images/superb-fairywren/superb-fairywren.jpg",
-        "caption": "Superb Fairywren"
-      },
-      {
-        "url": "/images/superb-fairywren/female.jpg",
-        "caption": "Female Superb Fairywren"
-      }
-    ],
     "funFacts": [
       "Males have a brilliant blue and black plumage during breeding season",
       "They are socially monogamous and sexually promiscuous"
@@ -62,16 +42,6 @@
     "description": "The rainbow lorikeet is a species of parrot found in Australia. It is common along the eastern seaboard, from northern Queensland to South Australia.",
     "habitat": "Rainforests, coastal bushes and woodland areas.",
     "diet": "Primarily nectar and pollen, but also fruits, seeds and some insects.",
-    "images": [
-      {
-        "url": "/images/rainbow-lorikeet/rainbow-lorikeet.jpg",
-        "caption": "Rainbow Lorikeet"
-      },
-      {
-        "url": "/images/rainbow-lorikeet/feeding.jpg",
-        "caption": "Rainbow Lorikeet feeding on nectar"
-      }
-    ],
     "funFacts": [
       "Known for their bright coloration and noisy calls",
       "They have a brush-tipped tongue for feeding on nectar"
