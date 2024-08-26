@@ -61,7 +61,45 @@ const next = nextBird.get();
   const subscriptionManager = createSubscriptionManager();
 
   function updateSchedule() {
-    // ... (updateSchedule function remains the same) ...
+    const scheduleList = document.getElementById("schedule-list");
+    const currentTimeElement = document.getElementById("current-time");
+    const currentBirdElement = document.getElementById("current-bird");
+    const nextBirdElement = document.getElementById("next-bird");
+
+    if (
+      !scheduleList ||
+      !currentTimeElement ||
+      !currentBirdElement ||
+      !nextBirdElement
+    )
+      return;
+
+    const schedule = Object.values(daySchedule.get());
+    const time = currentTime.get();
+    const current = currentBird.get();
+    const next = nextBird.get();
+
+    currentTimeElement.textContent = `Current Time: ${time}`;
+
+    scheduleList.innerHTML = schedule
+      .map(
+        (bird) => `
+        <li class="${bird.slug === current?.slug ? "current" : ""}">
+          <a href="/birds/${bird.slug}">
+            ${bird.startTime} - ${bird.name}
+          </a>
+        </li>
+      `
+      )
+      .join("");
+
+    currentBirdElement.textContent = current
+      ? `Current bird: ${current.name} (until ${current.endTime})`
+      : "No bird currently active";
+
+    nextBirdElement.textContent = next
+      ? `Next up: ${next.name} at ${next.startTime}`
+      : "No more birds scheduled for today";
   }
 
   function initializeSchedule() {
