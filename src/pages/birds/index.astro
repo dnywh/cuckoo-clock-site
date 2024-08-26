@@ -11,12 +11,14 @@ const mergedBirdData = getMergedBirdData();
 <Layout title="Bird Index">
   <main>
     <h1>All Birds</h1>
-    <!-- TODO: ViewTransition doesn't respect new imageSlug on subsequent page visits -->
-    <!-- <ThreeScene
-      imageSlug=`galah.jpg`
-      cameraPosition={{ x: 0, y: -100, z: 100 }}
-      cameraRotation={{ x: 0, y: 0, z: 0 }}
-    /> -->
+
+    <div transition:name="foo">
+      <ThreeScene
+        imageSlug=`galah.jpg`
+        cameraPosition={{ x: 24, y: -100, z: 100 }}
+      />
+    </div>
+
     <p>Here are all the birds:</p>
     <ul role="list" class="link-card-grid">
       {

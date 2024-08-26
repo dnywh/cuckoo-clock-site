@@ -126,4 +126,7 @@ const next = nextBird.get();
     unsubscribers.forEach((unsubscribe) => unsubscribe());
     unsubscribers = [];
   });
+
+  // Fallback for cases where astro:page-load might not fire (like back button navigation)
+  // window.addEventListener("popstate", initializeSchedule);
 </script>

@@ -1,8 +1,8 @@
 ---
 // src/pages/now.astro
 import Layout from "../layouts/Layout.astro";
+import ThreeScene from "../components/ThreeScene.astro";
 import Card from "../components/Card.astro";
-import { currentBird } from "../stores/birdTimeStore";
 ---
 
 <Layout title="Now">
@@ -11,11 +11,18 @@ import { currentBird } from "../stores/birdTimeStore";
     <div id="birdInfo">Loading bird...</div>
     <aside transition:name="hero">
       <Card
-        href={`laughing-kookaburra`}
+        href={`/birds/laughing-kookaburra`}
         title="Hello from now.astro"
         body="This is my now page. It's loading."
       />
     </aside>
+
+    <div transition:name="foo">
+      <ThreeScene
+        imageSlug=`tawny-frogmouth.jpg`
+        cameraPosition={{ x: 50, y: -100, z: 100 }}
+      />
+    </div>
   </main>
 </Layout>
 

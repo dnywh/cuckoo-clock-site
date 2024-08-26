@@ -16,12 +16,13 @@ import BirdSchedule from "../components/BirdSchedule.astro";
       />
     </aside>
 
-    <!-- TODO: ViewTransition doesn't respect new imageSlug on subsequent page visits -->
-    <!-- <ThreeScene
-      imageSlug=`galah.jpg`
-      cameraPosition={{ x: 20, y: -100, z: 50 }}
-      cameraRotation={{ x: 0, y: 0, z: 0 }}
-    /> -->
+    <div transition:name="foo">
+      <ThreeScene
+        imageSlug=`rainbow-lorikeet.jpg`
+        cameraPosition={{ x: 100, y: -100, z: 100 }}
+      />
+    </div>
+
     <BirdSchedule />
   </main>
 </Layout>

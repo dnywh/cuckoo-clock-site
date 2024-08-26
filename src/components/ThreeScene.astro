@@ -1,12 +1,17 @@
 ---
 interface Props {
   imageSlug: string;
+  cameraPosition?: { x: number; y: number; z: number };
 }
 
-const { imageSlug } = Astro.props;
+const { imageSlug, cameraPosition = { x: 0, y: -100, z: 100 } } = Astro.props;
 ---
 
-<div id="scene-container" data-image-slug={imageSlug} transition:persist>
+<div
+  id="scene-container"
+  data-image-slug={imageSlug}
+  data-camera-position={JSON.stringify(cameraPosition)}
+>
   <canvas id="three-canvas"></canvas>
 </div>
 
@@ -20,16 +25,12 @@ const { imageSlug } = Astro.props;
     const sceneContainer = document.getElementById("scene-container");
     const canvas = document.getElementById("three-canvas");
 
-    // If elements don't exist, exit gracefully
     if (!sceneContainer || !canvas) return;
 
     const imageSlug = sceneContainer.dataset.imageSlug;
-
-    // Clear existing scene if it exists
-    if (scene) {
-      scene.clear();
-      renderer.dispose();
-    }
+    const cameraPosition = JSON.parse(
+      sceneContainer.dataset.cameraPosition || '{"x": 0, "y": -100, "z": 100}'
+    );
 
     // Set up scene
     scene = new THREE.Scene();
@@ -38,11 +39,16 @@ const { imageSlug } = Astro.props;
     renderer.setClearColor(0x333333, 0);
 
     // Position camera
-    camera.position.set(0, -100, 100);
+    camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z);
     camera.lookAt(0, 0, 0);
 
-    // Create a texture loader
-    const textureLoader = new THREE.TextureLoader();
+    // Add lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.95);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
 
     // Load the model
     const loader = new GLTFLoader();
@@ -51,11 +57,7 @@ const { imageSlug } = Astro.props;
       (gltf) => {
         model = gltf.scene;
         scene.add(model);
-
-        // Apply textures and materials
         applyTextures(imageSlug);
-
-        // Initial size update and start animation
         updateSizes();
         animate();
       },
@@ -64,56 +66,6 @@ const { imageSlug } = Astro.props;
         console.error("An error occurred while loading the model:", error);
       }
     );
-
-    // Add lights to the scene
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
-    scene.add(ambientLight);
-
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.95);
-    directionalLight.position.set(5, 5, 5);
-    scene.add(directionalLight);
-
-    const pointLight = new THREE.PointLight(0xffffff, 0.85);
-    pointLight.position.set(-5, -5, -5);
-    scene.add(pointLight);
-
-    // Handle window resizing
-    function updateSizes() {
-      const width = sceneContainer.clientWidth;
-      const height = sceneContainer.clientHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    }
-
-    // Handle scrolling
-    function handleScroll() {
-      const scrollPercentage =
-        window.scrollY /
-        (document.documentElement.scrollHeight - window.innerHeight);
-      const rotationAngle = (scrollPercentage * Math.PI) / 6;
-      if (scene) scene.rotation.x = -rotationAngle;
-    }
-
-    // Render loop
-    function animate() {
-      if (scene && camera && renderer) {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-      }
-    }
-
-    // Event listeners
-    window.addEventListener("resize", updateSizes);
-    window.addEventListener("scroll", handleScroll);
-
-    // Clean up function
-    return () => {
-      window.removeEventListener("resize", updateSizes);
-      window.removeEventListener("scroll", handleScroll);
-      if (renderer) renderer.dispose();
-      if (scene) scene.clear();
-    };
   }
 
   function applyTextures(imageSlug) {
@@ -122,13 +74,6 @@ const { imageSlug } = Astro.props;
     const textureLoader = new THREE.TextureLoader();
     model.traverse((child) => {
       if (child instanceof THREE.Mesh) {
-        if (!(child.material instanceof THREE.MeshStandardMaterial)) {
-          child.material = new THREE.MeshStandardMaterial({
-            color: child.material.color,
-            name: child.material.name,
-          });
-        }
-
         if (child.material.name === "screen" && imageSlug) {
           textureLoader.load(`/images/${imageSlug}`, (texture) => {
             texture.flipY = false;
@@ -140,27 +85,36 @@ const { imageSlug } = Astro.props;
     });
   }
 
-  // Initialize Three.js scene
-  let cleanup = initThreeJS();
-
-  // Re-initialize on view transitions
-  document.addEventListener("astro:after-swap", () => {
-    if (cleanup) cleanup();
-    cleanup = initThreeJS();
-  });
-
-  // Update textures when the image slug changes
-  document.addEventListener("astro:page-load", () => {
+  function updateSizes() {
     const sceneContainer = document.getElementById("scene-container");
-    if (sceneContainer) {
-      const newImageSlug = sceneContainer.dataset.imageSlug;
-      applyTextures(newImageSlug);
-    }
-  });
+    if (!sceneContainer) return;
+
+    const width = sceneContainer.clientWidth;
+    const height = sceneContainer.clientHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+  }
+
+  // Initialize Three.js scene
+  initThreeJS();
+
+  // Update on page load and after view transitions
+  document.addEventListener("astro:page-load", initThreeJS);
+
+  // Handle window resizing
+  window.addEventListener("resize", updateSizes);
 
   // Clean up on page unload
   window.addEventListener("unload", () => {
-    if (cleanup) cleanup();
+    window.removeEventListener("resize", updateSizes);
+    if (renderer) renderer.dispose();
+    if (scene) scene.clear();
   });
 </script>
 
