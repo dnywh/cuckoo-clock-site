@@ -53,24 +53,7 @@ const { imageSlug } = Astro.props;
         scene.add(model);
 
         // Apply textures and materials
-        model.traverse((child) => {
-          if (child instanceof THREE.Mesh) {
-            if (!(child.material instanceof THREE.MeshStandardMaterial)) {
-              child.material = new THREE.MeshStandardMaterial({
-                color: child.material.color,
-                name: child.material.name,
-              });
-            }
-
-            if (child.material.name === "screen" && imageSlug) {
-              textureLoader.load(`/images/${imageSlug}`, (texture) => {
-                texture.flipY = false;
-                child.material.map = texture;
-                child.material.needsUpdate = true;
-              });
-            }
-          }
-        });
+        applyTextures(imageSlug);
 
         // Initial size update and start animation
         updateSizes();
@@ -133,6 +116,30 @@ const { imageSlug } = Astro.props;
     };
   }
 
+  function applyTextures(imageSlug) {
+    if (!model) return;
+
+    const textureLoader = new THREE.TextureLoader();
+    model.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        if (!(child.material instanceof THREE.MeshStandardMaterial)) {
+          child.material = new THREE.MeshStandardMaterial({
+            color: child.material.color,
+            name: child.material.name,
+          });
+        }
+
+        if (child.material.name === "screen" && imageSlug) {
+          textureLoader.load(`/images/${imageSlug}`, (texture) => {
+            texture.flipY = false;
+            child.material.map = texture;
+            child.material.needsUpdate = true;
+          });
+        }
+      }
+    });
+  }
+
   // Initialize Three.js scene
   let cleanup = initThreeJS();
 
@@ -140,6 +147,15 @@ const { imageSlug } = Astro.props;
   document.addEventListener("astro:after-swap", () => {
     if (cleanup) cleanup();
     cleanup = initThreeJS();
+  });
+
+  // Update textures when the image slug changes
+  document.addEventListener("astro:page-load", () => {
+    const sceneContainer = document.getElementById("scene-container");
+    if (sceneContainer) {
+      const newImageSlug = sceneContainer.dataset.imageSlug;
+      applyTextures(newImageSlug);
+    }
   });
 
   // Clean up on page unload
