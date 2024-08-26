@@ -9,6 +9,7 @@ const { imageSlug, cameraPosition = { x: 0, y: -100, z: 100 } } = Astro.props;
 
 <div
   id="scene-container"
+  transition:name="foo"
   data-image-slug={imageSlug}
   data-camera-position={JSON.stringify(cameraPosition)}
 >

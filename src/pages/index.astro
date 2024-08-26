@@ -16,12 +16,10 @@ import BirdSchedule from "../components/BirdSchedule.astro";
       />
     </aside>
 
-    <div transition:name="foo">
-      <ThreeScene
-        imageSlug=`rainbow-lorikeet.jpg`
-        cameraPosition={{ x: 100, y: -100, z: 100 }}
-      />
-    </div>
+    <ThreeScene
+      imageSlug=`rainbow-lorikeet.jpg`
+      cameraPosition={{ x: 100, y: -100, z: 100 }}
+    />
 
     <BirdSchedule />
   </main>

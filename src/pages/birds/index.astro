@@ -12,12 +12,10 @@ const mergedBirdData = getMergedBirdData();
   <main>
     <h1>All Birds</h1>
 
-    <div transition:name="foo">
-      <ThreeScene
-        imageSlug=`galah.jpg`
-        cameraPosition={{ x: 24, y: -100, z: 100 }}
-      />
-    </div>
+    <ThreeScene
+      imageSlug=`galah.jpg`
+      cameraPosition={{ x: 24, y: -100, z: 100 }}
+    />
 
     <p>Here are all the birds:</p>
     <ul role="list" class="link-card-grid">

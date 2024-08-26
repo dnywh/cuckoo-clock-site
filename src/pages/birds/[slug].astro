@@ -38,12 +38,10 @@ if (!bird) {
       />
     </aside>
 
-    <div transition:name="foo">
-      <ThreeScene
-        imageSlug=`${bird.slug}.jpg`
-        cameraPosition={{ x: 0, y: -100, z: 100 }}
-      />
-    </div>
+    <ThreeScene
+      imageSlug=`${bird.slug}.jpg`
+      cameraPosition={{ x: 0, y: -100, z: 100 }}
+    />
 
     <h1>{bird.name}</h1>
     <p>Scientific Name: {bird.scientificName}</p>
