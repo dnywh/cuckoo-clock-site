@@ -1,40 +1,48 @@
 ---
 // src/pages/now.astro
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 import { currentBird } from "../stores/birdTimeStore";
-// const bird = currentBird.get();
-// We're not using Astro.redirect because of the ugly white flash
-// if (bird) {
-//   return Astro.redirect(`/birds/${bird.slug}`);
-// }
 ---
 
 <Layout title="Now">
   <main>
     <h1>Now</h1>
     <div id="birdInfo">Loading bird...</div>
+    <aside transition:name="hero">
+      <Card
+        href={`laughing-kookaburra`}
+        title="Hello from now.astro"
+        body="This is my now page. It's loading."
+      />
+    </aside>
   </main>
 </Layout>
 
 <style>
   #birdInfo {
     margin-top: 20px;
-    /* opacity: 0; */
   }
 </style>
 
 <script>
+  import { navigate } from "astro:transitions/client";
   import { currentBird, currentTime } from "../stores/birdTimeStore";
+
+  let unsubscribers = [];
 
   function updateBirdInfo() {
     const birdInfoElement = document.getElementById("birdInfo");
+    if (!birdInfoElement) return; // Exit if element not found
+
     const bird = currentBird.get();
 
     if (bird) {
       birdInfoElement.innerHTML = `Current bird: ${bird.name}`;
       // Redirect after a short delay
       setTimeout(() => {
-        window.location.href = `/birds/${bird.slug}`;
+        // Use Astro's navigate function to ensure <ViewTransitions /> router listens to this
+        navigate(`/birds/${bird.slug}`);
       }, 3000);
     } else {
       // Notify after a short delay
@@ -45,10 +53,28 @@ import { currentBird } from "../stores/birdTimeStore";
     }
   }
 
-  // Initial update
-  updateBirdInfo();
+  function initializePage() {
+    // Clean up existing listeners
+    unsubscribers.forEach((unsubscribe) => unsubscribe());
+    unsubscribers = [];
 
-  // Update when store values change
-  currentBird.listen(() => updateBirdInfo());
-  currentTime.listen(() => updateBirdInfo());
+    // Set up new listeners
+    unsubscribers.push(currentBird.subscribe(() => updateBirdInfo()));
+    unsubscribers.push(currentTime.subscribe(() => updateBirdInfo()));
+
+    // Initial update
+    updateBirdInfo();
+  }
+
+  // Run initialization when the script loads
+  initializePage();
+
+  // Re-run initialization after view transitions
+  document.addEventListener("astro:page-load", initializePage);
+
+  // Clean up subscriptions before view transitions
+  document.addEventListener("astro:before-preparation", () => {
+    unsubscribers.forEach((unsubscribe) => unsubscribe());
+    unsubscribers = [];
+  });
 </script>
