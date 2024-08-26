@@ -9,6 +9,12 @@ import Card from "../components/Card.astro";
   <main>
     <h1>Now</h1>
     <div id="birdInfo">Loading bird...</div>
+
+    <ThreeScene
+      imageSlug=`australian-king-parrot.jpg`
+      cameraPosition={{ x: 50, y: -100, z: 100 }}
+    />
+
     <aside transition:name="hero">
       <Card
         href={`/birds/laughing-kookaburra`}
@@ -16,11 +22,6 @@ import Card from "../components/Card.astro";
         body="This is my now page. It's loading."
       />
     </aside>
-
-    <ThreeScene
-      imageSlug=`tawny-frogmouth.jpg`
-      cameraPosition={{ x: 50, y: -100, z: 100 }}
-    />
   </main>
 </Layout>
 
@@ -35,6 +36,7 @@ import Card from "../components/Card.astro";
   import { currentBird, currentTime } from "../stores/birdTimeStore";
 
   let unsubscribers = [];
+  let redirectTimeout: number | null = null;
 
   function updateBirdInfo() {
     const birdInfoElement = document.getElementById("birdInfo");
@@ -44,12 +46,20 @@ import Card from "../components/Card.astro";
 
     if (bird) {
       birdInfoElement.innerHTML = `Current bird: ${bird.name}`;
-      // Redirect after a short delay
-      setTimeout(() => {
+      // Clear any existing timeout
+      if (redirectTimeout) {
+        clearTimeout(redirectTimeout);
+      }
+      // Set new timeout
+      redirectTimeout = setTimeout(() => {
         // Use Astro's navigate function to ensure <ViewTransitions /> router listens to this
         navigate(`/birds/${bird.slug}`);
       }, 3000);
     } else {
+      // Clear any existing timeout
+      if (redirectTimeout) {
+        clearTimeout(redirectTimeout);
+      }
       // Notify after a short delay
       setTimeout(() => {
         birdInfoElement.textContent =
@@ -77,9 +87,12 @@ import Card from "../components/Card.astro";
   // Re-run initialization after view transitions
   document.addEventListener("astro:page-load", initializePage);
 
-  // Clean up subscriptions before view transitions
+  // Clean up subscriptions and clear timeout before view transitions
   document.addEventListener("astro:before-preparation", () => {
     unsubscribers.forEach((unsubscribe) => unsubscribe());
     unsubscribers = [];
+    if (redirectTimeout) {
+      clearTimeout(redirectTimeout);
+    }
   });
 </script>
