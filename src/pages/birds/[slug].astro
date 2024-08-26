@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
 import ThreeScene from "../../components/ThreeScene.astro";
 
 import { Image } from "astro:assets";
@@ -29,7 +30,13 @@ if (!bird) {
 
 <Layout title={bird.name}>
   <main>
-    <!-- <ThreeScene imageSlug=`${bird.slug}.jpg` /> -->
+    <aside transition:name="hero">
+      <Card
+        href={`laughing-kookaburra`}
+        title="Hello from [slug].astro"
+        body="This is my bird slug page."
+      />
+    </aside>
 
     <ThreeScene
       imageSlug=`${bird.slug}.jpg`

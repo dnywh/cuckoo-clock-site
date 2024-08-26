@@ -1,12 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ThreeScene from "../components/ThreeScene.astro";
+import Card from "../components/Card.astro";
 import BirdSchedule from "../components/BirdSchedule.astro";
 ---
 
 <Layout title="Cuckoo Clock">
   <main>
     <h1>Cuckoo Clock</h1>
+    <aside transition:name="hero">
+      <Card
+        href={`/birds/galah`}
+        title="This is my test title"
+        body="This is my test body content. It lives here."
+      />
+    </aside>
+
     <!-- TODO: ViewTransition doesn't respect new imageSlug on subsequent page visits -->
     <!-- <ThreeScene
       imageSlug=`galah.jpg`

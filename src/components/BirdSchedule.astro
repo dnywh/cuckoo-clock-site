@@ -57,6 +57,8 @@ const next = nextBird.get();
     nextBird,
   } from "../stores/birdTimeStore";
 
+  let unsubscribers = [];
+
   function updateSchedule() {
     const scheduleList = document.getElementById("schedule-list");
     const currentTimeElement = document.getElementById("current-time");
@@ -99,11 +101,29 @@ const next = nextBird.get();
       : "No more birds scheduled for today";
   }
 
-  daySchedule.subscribe(updateSchedule);
-  currentTime.subscribe(updateSchedule);
-  currentBird.subscribe(updateSchedule);
-  nextBird.subscribe(updateSchedule);
+  function initializeSchedule() {
+    // Clean up any existing subscriptions
+    unsubscribers.forEach((unsubscribe) => unsubscribe());
+    unsubscribers = [];
 
-  // Initial update
-  updateSchedule();
+    // Set up new subscriptions
+    unsubscribers.push(daySchedule.subscribe(updateSchedule));
+    unsubscribers.push(currentTime.subscribe(updateSchedule));
+    unsubscribers.push(currentBird.subscribe(updateSchedule));
+    unsubscribers.push(nextBird.subscribe(updateSchedule));
+
+    updateSchedule();
+  }
+
+  // Initialize on load
+  initializeSchedule();
+
+  // Re-initialize after view transitions
+  document.addEventListener("astro:page-load", initializeSchedule);
+
+  // Clean up subscriptions when the component is removed
+  document.addEventListener("astro:before-preparation", () => {
+    unsubscribers.forEach((unsubscribe) => unsubscribe());
+    unsubscribers = [];
+  });
 </script>
