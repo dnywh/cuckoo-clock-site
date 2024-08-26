@@ -28,8 +28,9 @@ import { currentBird } from "../stores/birdTimeStore";
 <script>
   import { navigate } from "astro:transitions/client";
   import { currentBird, currentTime } from "../stores/birdTimeStore";
+  import { createSubscriptionManager } from "../utils/subscriptionManager";
 
-  let unsubscribers = [];
+  const subscriptionManager = createSubscriptionManager();
 
   function updateBirdInfo() {
     const birdInfoElement = document.getElementById("birdInfo");
@@ -54,13 +55,11 @@ import { currentBird } from "../stores/birdTimeStore";
   }
 
   function initializePage() {
-    // Clean up existing listeners
-    unsubscribers.forEach((unsubscribe) => unsubscribe());
-    unsubscribers = [];
+    subscriptionManager.unsubscribeAll();
 
     // Set up new listeners
-    unsubscribers.push(currentBird.subscribe(() => updateBirdInfo()));
-    unsubscribers.push(currentTime.subscribe(() => updateBirdInfo()));
+    subscriptionManager.subscribe(currentBird, updateBirdInfo);
+    subscriptionManager.subscribe(currentTime, updateBirdInfo);
 
     // Initial update
     updateBirdInfo();
@@ -73,8 +72,8 @@ import { currentBird } from "../stores/birdTimeStore";
   document.addEventListener("astro:page-load", initializePage);
 
   // Clean up subscriptions before view transitions
-  document.addEventListener("astro:before-preparation", () => {
-    unsubscribers.forEach((unsubscribe) => unsubscribe());
-    unsubscribers = [];
-  });
+  document.addEventListener(
+    "astro:before-preparation",
+    subscriptionManager.unsubscribeAll
+  );
 </script>
