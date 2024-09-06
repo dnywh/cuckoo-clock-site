@@ -14,12 +14,12 @@ interface Seasons {
 
 interface BirdWithTimes {
   name: string;
+  latin: string;
   slug: string;
   seasons: Seasons;
 }
 
 interface BirdDetails {
-  scientificName: string;
   description: string;
   habitat: string;
   diet: string;
