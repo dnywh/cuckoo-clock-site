@@ -1,22 +1,29 @@
 ---
 // src/components/Timestamp.astro
-import { currentTime } from "../stores/birdTimeStore";
+
 import { formatDate, getCurrentSeasonAndTime } from "../utils/timeUtils";
-import { TIME_ZONE } from "../config";
+import { TIME_ZONE, LOCATION_STRING } from "../config";
 
 const { time } = getCurrentSeasonAndTime();
-// console.log("Server-side time:", time); // Debug log
 const initialTime = time;
 const initialDate = formatDate(
   new Date().toLocaleString("en-US", { timeZone: TIME_ZONE })
 );
+const location = LOCATION_STRING;
 ---
 
 <div id="timestamp">
   <p>
-    <span id="time">{initialTime}</span> ∙ <span id="date">{initialDate}</span>
+    <span id="time">{initialTime}</span> ∙ <span id="date">{initialDate}</span> ∙
+    {location}
   </p>
 </div>
+
+<style>
+  p {
+    text-transform: uppercase;
+  }
+</style>
 
 <script>
   import { currentTime } from "../stores/birdTimeStore";

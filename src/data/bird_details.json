@@ -1,6 +1,5 @@
 {
   "australian-magpie": {
-    "scientificName": "Gymnorhina tibicen",
     "description": "The Australian magpie is a medium-sized black and white passerine bird native to Australia and southern New Guinea.",
     "habitat": "Found in a variety of habitats across Australia, including urban areas, farmlands, and forests.",
     "diet": "Omnivorous, feeding on insects, worms, small animals, and some plant matter.",
@@ -18,7 +17,6 @@
     ]
   },
   "laughing-kookaburra": {
-    "scientificName": "Dacelo novaeguineae",
     "description": "The laughing kookaburra is a large terrestrial tree kingfisher native to eastern Australia.",
     "habitat": "Woodland territories, open eucalyptus forests, and park lands.",
     "diet": "Carnivorous, eating mice, snakes, insects, small reptiles, and the young of other birds.",
@@ -28,7 +26,6 @@
     ]
   },
   "superb-fairywren": {
-    "scientificName": "Malurus cyaneus",
     "description": "The superb fairywren is a passerine bird in the Australasian wren family, Maluridae.",
     "habitat": "Found in almost any area that has at least a little dense undergrowth for shelter.",
     "diet": "Mainly insectivorous, feeding on a wide range of small creatures.",
@@ -38,7 +35,6 @@
     ]
   },
   "rainbow-lorikeet": {
-    "scientificName": "Trichoglossus moluccanus",
     "description": "The rainbow lorikeet is a species of parrot found in Australia. It is common along the eastern seaboard, from northern Queensland to South Australia.",
     "habitat": "Rainforests, coastal bushes and woodland areas.",
     "diet": "Primarily nectar and pollen, but also fruits, seeds and some insects.",
@@ -48,7 +44,6 @@
     ]
   },
   "willie-wagtail": {
-    "scientificName": "Rhipidura leucophrys",
     "description": "The willie wagtail is a passerine bird native to Australia, New Guinea, the Solomon Islands, the Bismarck Archipelago, and eastern Indonesia.",
     "habitat": "Found in most open habitats, especially around human habitation and in urban areas.",
     "diet": "Mostly insectivorous, catching insects mid-air or on the ground.",
