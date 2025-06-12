@@ -1,0 +1,176 @@
+{
+  "months": {
+    "1": [
+      {
+        "bird": "laughing-kookaburra",
+        "time": "05:00"
+      },
+      {
+        "bird": "australian-king-parrot",
+        "time": "13:00"
+      },
+      {
+        "bird": "welcome-swallow",
+        "time": "19:00"
+      }
+    ],
+    "2": [
+      {
+        "bird": "superb-fairywren",
+        "time": "05:00"
+      },
+      {
+        "bird": "pied-currawong",
+        "time": "14:00"
+      },
+      {
+        "bird": "willie-wagtail",
+        "time": "18:00"
+      }
+    ],
+    "3": [
+      {
+        "bird": "noisy-friarbird",
+        "time": "05:00"
+      },
+      {
+        "bird": "galah",
+        "time": "12:00"
+      },
+      {
+        "bird": "tawny-frogmouth",
+        "time": "19:00"
+      }
+    ],
+    "4": [
+      {
+        "bird": "rainbow-lorikeet",
+        "time": "05:00"
+      },
+      {
+        "bird": "red-wattlebird",
+        "time": "14:00"
+      },
+      {
+        "bird": "white-throated-treecreeper",
+        "time": "17:00"
+      }
+    ],
+    "5": [
+      {
+        "bird": "crimson-rosella",
+        "time": "05:00"
+      },
+      {
+        "bird": "sulphur-crested-cockatoo",
+        "time": "13:00"
+      },
+      {
+        "bird": "tawny-frogmouth",
+        "time": "19:00"
+      }
+    ],
+    "6": [
+      {
+        "bird": "flame-robin",
+        "time": "05:00"
+      },
+      {
+        "bird": "gang-gang-cockatoo",
+        "time": "11:00"
+      },
+      {
+        "bird": "willie-wagtail",
+        "time": "18:00"
+      }
+    ],
+    "7": [
+      {
+        "bird": "crimson-rosella",
+        "time": "05:00"
+      },
+      {
+        "bird": "australian-king-parrot",
+        "time": "12:00"
+      },
+      {
+        "bird": "tawny-frogmouth",
+        "time": "19:00"
+      }
+    ],
+    "8": [
+      {
+        "bird": "australian-magpie",
+        "time": "05:00"
+      },
+      {
+        "bird": "pied-currawong",
+        "time": "13:00"
+      },
+      {
+        "bird": "spotted-pardalote",
+        "time": "17:00"
+      }
+    ],
+    "9": [
+      {
+        "bird": "australian-magpie",
+        "time": "05:00"
+      },
+      {
+        "bird": "sulphur-crested-cockatoo",
+        "time": "12:00"
+      },
+      {
+        "bird": "willie-wagtail",
+        "time": "18:00"
+      }
+    ],
+    "10": [
+      {
+        "bird": "rainbow-lorikeet",
+        "time": "05:00"
+      },
+      {
+        "bird": "australian-king-parrot",
+        "time": "13:00"
+      },
+      {
+        "bird": "tawny-frogmouth",
+        "time": "19:00"
+      }
+    ],
+    "11": [
+      {
+        "bird": "superb-fairywren",
+        "time": "05:00"
+      },
+      {
+        "bird": "black-faced-cuckooshrike",
+        "time": "11:00"
+      },
+      {
+        "bird": "willie-wagtail",
+        "time": "18:00"
+      }
+    ],
+    "12": [
+      {
+        "bird": "laughing-kookaburra",
+        "time": "05:00"
+      },
+      {
+        "bird": "sulphur-crested-cockatoo",
+        "time": "12:00"
+      },
+      {
+        "bird": "welcome-swallow",
+        "time": "19:00"
+      }
+    ]
+  },
+  "quietHours": {
+    "start": "21:00",
+    "end": "05:00"
+  }
+}
