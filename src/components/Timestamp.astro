@@ -1,10 +1,10 @@
 ---
 // src/components/Timestamp.astro
 
-import { formatDate, getCurrentSeasonAndTime } from "../utils/timeUtils";
+import { formatDate, getCurrentMonthAndTime } from "../utils/timeUtils";
 import { TIME_ZONE, LOCATION_STRING } from "../config";
 
-const { time } = getCurrentSeasonAndTime();
+const { time } = getCurrentMonthAndTime();
 const initialTime = time;
 const initialDate = formatDate(
   new Date().toLocaleString("en-US", { timeZone: TIME_ZONE })

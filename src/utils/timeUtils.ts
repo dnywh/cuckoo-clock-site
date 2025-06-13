@@ -1,27 +1,14 @@
-import { seasons } from "../data/bird_data.json";
 import { TIME_ZONE } from "../config";
 
-export function getCurrentSeasonAndTime() {
+export function getCurrentMonthAndTime() {
   const now = new Date();
-  // console.log("1. Current UTC time:", now.toUTCString());
-
   const localString = now.toLocaleString("en-US", { timeZone: TIME_ZONE });
-  // console.log("2. Local time string:", localString);
-
   const [datePart, timePart] = localString.split(", ");
-  // console.log("3. Local time parts:", { datePart, timePart });
-
   const month = new Date(localString).getMonth() + 1;
-  const currentSeason =
-    Object.entries(seasons).find(([_, data]) =>
-      data.months.includes(month)
-    )?.[0] || "unknown";
-
   const formattedTime = formatTime(timePart);
-  // console.log("4. Formatted local time:", formattedTime);
 
   return {
-    season: currentSeason,
+    month: month.toString(),
     time: formattedTime,
   };
 }

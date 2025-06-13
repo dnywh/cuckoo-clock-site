@@ -27,11 +27,7 @@ const next = nextBird.get();
     }
   </ul>
   <p id="current-bird">
-    {
-      current
-        ? `Current bird: ${current.name} (until ${current.endTime})`
-        : "No bird currently active"
-    }
+    {current ? `Current bird: ${current.name}` : "No bird currently active"}
   </p>
   <p id="next-bird">
     {
@@ -93,7 +89,7 @@ const next = nextBird.get();
       .join("");
 
     currentBirdElement.textContent = current
-      ? `Current bird: ${current.name} (until ${current.endTime})`
+      ? `Current bird: ${current.name}`
       : "No bird currently active";
 
     nextBirdElement.textContent = next

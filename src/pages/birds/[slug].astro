@@ -6,7 +6,7 @@ import ThreeScene from "../../components/ThreeScene.astro";
 import { Image } from "astro:assets";
 
 import { getMergedBirdData } from "../../utils/birdDataMerger";
-import { getCurrentSeasonAndTime } from "../../utils/timeUtils";
+// import { getCurrentMonthAndTime } from "../../utils/timeUtils";
 
 // This function tells Astro that the collection should be built statically
 // Something like...
@@ -14,13 +14,15 @@ import { getCurrentSeasonAndTime } from "../../utils/timeUtils";
 // Won't work because of this function
 export function getStaticPaths() {
   const mergedBirdData = getMergedBirdData();
-  return Object.keys(mergedBirdData).map((slug) => ({ params: { slug } }));
+  return Object.entries(mergedBirdData)
+    .filter(([_, bird]) => bird && bird.name) // Ensure we have valid bird data
+    .map(([slug]) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
 const mergedBirdData = getMergedBirdData();
 const bird = mergedBirdData[slug];
-const { season } = getCurrentSeasonAndTime();
+console.log({ bird });
 
 // Handle case where bird doesn't exist
 if (!bird) {
@@ -30,11 +32,11 @@ if (!bird) {
 
 <Layout title={bird.name}>
   <main>
-    <aside transition:name="hero">
+    <aside>
       <Card
-        href={`laughing-kookaburra`}
-        title="Hello from [slug].astro"
-        body="This is my bird slug page."
+        href={slug}
+        title=`Hello from [slug].astro`
+        body=`This is my bird slug page, currently showing ${slug}`
       />
     </aside>
 
@@ -43,13 +45,14 @@ if (!bird) {
       cameraPosition={{ x: 0, y: -100, z: 100 }}
     />
 
-    <h1>{bird.name}</h1>
-    <p>{bird.latin}</p>
+    <header>
+      <h1>{bird.name}</h1>
+      <p>{bird.latin}</p>
+    </header>
+
     <p>Habitat: {bird.habitat}</p>
     <p>Description: {bird.description}</p>
     <p>Diet: {bird.diet}</p>
-    <p>Current season: {season}</p>
-    <p>Active time this season: {bird.seasons[season]?.[0] || "Not active"}</p>
 
     {
       bird.funFacts && bird.funFacts.length > 0 && (
@@ -94,5 +97,9 @@ if (!bird) {
     color: white;
     font-size: 20px;
     line-height: 1.6;
+  }
+
+  header {
+    text-align: center;
   }
 </style>

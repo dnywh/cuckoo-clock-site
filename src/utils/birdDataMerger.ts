@@ -1,52 +1,34 @@
-import { birds as birdsWithTimes } from "../data/bird_data.json";
-import birdDetails from "../data/bird_details.json";
-
-interface Season {
-  months: number[];
-}
-
-interface Seasons {
-  spring: string[];
-  summer: string[];
-  autumn: string[];
-  winter: string[];
-}
-
-interface BirdWithTimes {
-  name: string;
-  latin: string;
-  slug: string;
-  seasons: Seasons;
-}
+import birdDetails from "../data/details.json";
 
 interface BirdDetails {
-  description: string;
-  habitat: string;
-  diet: string;
-  images: {
+  name: string;
+  latin: string;
+  habitat?: string;
+  description?: string;
+  diet?: string;
+  funFacts?: string[];
+  images?: Array<{
     url: string;
-    source?: string;
-    author?: string;
     caption: string;
-  }[];
-  funFacts: string[];
+    source: string;
+    author: string;
+  }>;
 }
 
-interface MergedBird extends BirdWithTimes, BirdDetails {}
+export interface MergedBird extends BirdDetails {
+  slug: string;
+}
 
 export function getMergedBirdData(): Record<string, MergedBird> {
   const mergedData: Record<string, MergedBird> = {};
 
-  for (const [slug, birdTime] of Object.entries(birdsWithTimes)) {
-    if (birdDetails[slug as keyof typeof birdDetails]) {
-      mergedData[slug] = {
-        ...(birdTime as BirdWithTimes),
-        ...(birdDetails[slug as keyof typeof birdDetails] as BirdDetails),
-      };
-    } else {
-      mergedData[slug] = birdTime as BirdWithTimes;
-    }
-  }
+  // Create merged data for each bird from details
+  Object.entries(birdDetails).forEach(([slug, details]) => {
+    mergedData[slug] = {
+      ...details,
+      slug,
+    };
+  });
 
   return mergedData;
 }

@@ -1,23 +1,24 @@
 import { atom, map } from "nanostores";
 import { getMergedBirdData } from "../utils/birdDataMerger";
 import {
-  getCurrentSeasonAndTime,
+  getCurrentMonthAndTime,
   formatTime,
   addHour,
   parseTime,
 } from "../utils/timeUtils";
-import { quietHours } from "../data/bird_data.json";
+import { months, quietHours } from "../data/schedule.json";
 import { TIME_ZONE } from "../config";
+
+const mergedBirdData = getMergedBirdData();
 
 export interface BirdInfo {
   slug: string;
   name: string;
   startTime: string;
-  endTime: string;
 }
 
 export const currentTime = atom<string>("");
-export const currentSeason = atom<string>("");
+export const currentMonth = atom<string>("");
 export const currentBird = atom<BirdInfo | null>(null);
 export const nextBird = atom<BirdInfo | null>(null);
 export const daySchedule = map<Record<string, BirdInfo>>({});
@@ -28,46 +29,39 @@ function getCurrentTime() {
 
 function updateStore() {
   const now = getCurrentTime();
-  const { season, time } = getCurrentSeasonAndTime(now);
+  const { month, time } = getCurrentMonthAndTime();
 
   currentTime.set(time);
-  currentSeason.set(season);
+  currentMonth.set(month);
 
-  const birds = getMergedBirdData();
-  const quietStart = quietHours[season].start;
-  const quietEnd = quietHours[season].end;
-
-  const schedule: BirdInfo[] = Object.entries(birds)
-    .filter(
-      ([_, bird]) => bird.seasons[season] && bird.seasons[season].length > 0
-    )
-    .map(([slug, bird]) => {
-      const startTime = formatTime(bird.seasons[season][0]);
-      const endTime = addHour(bird.seasons[season][0]);
-      return { slug, name: bird.name, startTime, endTime };
-    })
-    .filter((bird) => {
-      const isActive =
-        (parseTime(bird.startTime) >= parseTime(quietEnd) &&
-          parseTime(bird.startTime) < parseTime(quietStart)) ||
-        (parseTime(bird.endTime) > parseTime(quietEnd) &&
-          parseTime(bird.endTime) <= parseTime(quietStart));
-      return isActive;
-    })
-    .sort((a, b) => parseTime(a.startTime) - parseTime(b.startTime));
+  const monthSchedule = months[month] || [];
+  const schedule: BirdInfo[] = monthSchedule.map(({ bird, time }) => ({
+    slug: bird,
+    name: mergedBirdData[bird].name,
+    startTime: formatTime(time),
+  }));
 
   daySchedule.set(
     Object.fromEntries(schedule.map((bird) => [bird.slug, bird]))
   );
 
   const currentTimeMinutes = parseTime(time);
+  const quietStart = parseTime(quietHours.start);
+  const quietEnd = parseTime(quietHours.end);
 
+  // Find the current bird by looking at the next bird's start time
   const currentBirdInfo =
-    schedule.find(
-      (bird) =>
+    schedule.find((bird, index) => {
+      const nextBird = schedule[index + 1] || schedule[0];
+      const isInQuietHours =
+        currentTimeMinutes >= quietStart && currentTimeMinutes < quietEnd;
+
+      return (
         currentTimeMinutes >= parseTime(bird.startTime) &&
-        currentTimeMinutes < parseTime(bird.endTime)
-    ) || null;
+        currentTimeMinutes < parseTime(nextBird.startTime) &&
+        !isInQuietHours
+      );
+    }) || null;
 
   currentBird.set(currentBirdInfo);
 
@@ -78,7 +72,7 @@ function updateStore() {
   nextBird.set(nextBirdInfo);
 
   console.log(
-    `Store updated. Time: ${time}, Season: ${season}, Current Bird: ${currentBirdInfo?.name}, Next Bird: ${nextBirdInfo?.name}`
+    `Store updated. Time: ${time}, Month: ${month}, Current Bird: ${currentBirdInfo?.name}, Next Bird: ${nextBirdInfo?.name}`
   );
 }
 
