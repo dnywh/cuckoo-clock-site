@@ -1,13 +1,23 @@
 # Cuckoo Clock Site
 
-This is a companion website to the [Cuckoo Clock](http://github.com/dnywh/cuckoo-clock) project. It has more information on each bird, available at a tap. It's built using [Astro](https://astro.build/). A [GitHub Action](https://github.com/dnywh/cuckoo-clock/blob/main/.github/workflows/sync-birds.yml) syncs bird data and imagery between the two repositories.
+This is a companion website to the [Cuckoo Clock](http://github.com/dnywh/cuckoo-clock) physical clock project. It’s designed to display more information on each bird, maybe after tapping the NFC chip slotted inside the clock’s housing.
 
-## Now
+[Astro](https://astro.build/) is the framework that powers this website. [GitHub Actions](https://github.com/dnywh/cuckoo-clock/blob/main/.github/workflows/sync-birds.yml) syncs bird data and imagery between the two repositories.
 
-A NFC chip built-in to the [Cuckoo Clock](http://github.com/dnywh/cuckoo-clock) housing points to `clock.dannywhite.net/now`. That `/now` page, handled in `now.astro`, acts as a dynamic redirector to the current bird’s page, determined via that shared `schedule.json` file synced via the aforementioend [GitHub Action](https://github.com/dnywh/cuckoo-clock/blob/main/.github/workflows/sync-birds.yml).
+You can find more information about how it all works on the [Colophon](https://clock.dannywhite.net/colophon) page.
 
-This set up means that the NFC chip can permanently point to `/now`, with the site doing the heavy lifting to open the current bird’s page. No reprogramming of the NFC chip necessary.
+## Quick start
 
-## Today’s schedule
+```bash
+# Clone the repo
+git clone https://github.com/dnywh/cuckoo-clock-site
 
-`BirdSchedule.astro` shows today’s schedule with the current and next birds.
+# CD into it
+cd cuckoo-clock-site
+
+# Install the dependencies
+npm install
+
+# Run Astro locally
+npm run dev
+```

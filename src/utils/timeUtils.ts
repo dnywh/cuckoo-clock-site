@@ -8,7 +8,7 @@ export function getCurrentMonthAndTime() {
   const formattedTime = formatTime(timePart);
 
   return {
-    month: month.toString(),
+    month,
     time: formattedTime,
   };
 }

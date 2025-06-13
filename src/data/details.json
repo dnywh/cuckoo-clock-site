@@ -2,168 +2,548 @@
   "australian-magpie": {
     "name": "Australian Magpie",
     "latin": "Gymnorhina tibicen",
-    "description": "The Australian magpie is a medium-sized black and white passerine bird native to Australia and southern New Guinea.",
-    "habitat": "Found in a variety of habitats across Australia, including urban areas, farmlands, and forests.",
-    "diet": "Omnivorous, feeding on insects, worms, small animals, and some plant matter.",
+    "description": "A medium-sized black and white songbird famous for its beautiful caroling and remarkable intelligence.",
     "images": [
       {
         "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/421862384/large.jpg",
-        "source": "https://inaturalist.ala.org.au/observations/237072907",
         "author": "jg001",
-        "caption": "Australian Magpie doing its thing"
+        "caption": "Taken August 8, 2022 in Encounter Bay, South Australia.",
+        "source": {
+          "title": "iNaturalist",
+          "url": "https://inaturalist.ala.org.au/observations/237072907"
+        }
+      },
+      {
+        "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/421862384/large.jpg",
+        "author": "jg001",
+        "caption": "Taken August 8, 2022 in Encounter Bay, South Australia.",
+        "source": {
+          "title": "iNaturalist",
+          "url": "https://inaturalist.ala.org.au/observations/237072907"
+        }
       }
     ],
-    "funFacts": [
-      "Known for their beautiful and complex vocalizations",
-      "Can recognize and remember individual human faces"
+    "sounds": [
+      {
+        "file": "XC554841",
+        "author": "James Lambert",
+        "description": "warble",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/554841"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      },
+      {
+        "file": "XC591209",
+        "author": "Mike FitzGerald",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/591209"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      },
+      {
+        "file": "XC816123",
+        "author": "Marc Anderson",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/816123"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
+    "facts": [
+      {
+        "title": "Awesome Imitator",
+        "description": "Magpies can mimic car alarms, barking dogs, and even human speech - they're nature's feathered sound machines!"
+      },
+      {
+        "title": "Melodic Master",
+        "description": "They sing over 300 different songs, some so complex they take a year for young magpies to learn properly."
+      },
+      {
+        "title": "Never Forget a Face",
+        "description": "These clever birds recognize individual humans and remember who's been kind or mean to them for years."
+      },
+      {
+        "title": "Backyard Explorer",
+        "description": "From city parks to remote forests, magpies thrive everywhere in Australia - even doing 'turf inspections' on football fields!"
+      },
+      {
+        "title": "Omnivore Adventure",
+        "description": "They hunt like ninjas - stalking insects with beak probes, snatching lizards mid-sprint, and even stealing picnic snacks!"
+      }
     ]
   },
   "black-faced-cuckooshrike": {
     "name": "Black-faced Cuckooshrike",
     "latin": "Coracina novaehollandiae",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A sleek grey bird with a mysterious black mask, famous for its smooth gliding flights.",
+    "facts": [
+      {
+        "title": "Hybrid Appearance",
+        "description": "Named for its mix of cuckoo-like wings and shrike-like beak - nature's perfect combo!"
+      },
+      {
+        "title": "Urban Glider",
+        "description": "Watch them surfing city air currents - they perform graceful aerial dances between skyscrapers and trees."
+      },
+      {
+        "title": "Bug Buffet",
+        "description": "They specialize in caterpillar feasts, shaking hairy insects violently to remove prickly bits before eating."
+      },
+      {
+        "title": "Feathered Meteor",
+        "description": "When flying between trees, they tuck wings close and drop like grey rockets before swooping up at the last second!"
+      },
+      {
+        "title": "Secret Singer",
+        "description": "Listen for their soft 'churring' love songs during breeding season - like tiny marbles rolling in a cup."
+      }
+    ]
   },
   "crimson-rosella": {
     "name": "Crimson Rosella",
     "latin": "Platycercus elegans",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A brilliantly colored parrot that looks like a flying rainbow against green forests.",
+    "facts": [
+      {
+        "title": "Colour Changers",
+        "description": "Babies wear green camouflage jackets before transforming into dazzling red-and-blue adults - nature's glow-up!"
+      },
+      {
+        "title": "Mountain Acrobat",
+        "description": "They perform daring aerial rolls while chasing mates through snowy eucalyptus forests."
+      },
+      {
+        "title": "Seed Crusher",
+        "description": "Special beak grooves let them perfectly crack hard nuts while hanging upside down like feathered monkeys!"
+      },
+      {
+        "title": "Whistle Wizard",
+        "description": "Some learn human tunes and can whistle entire songs back to people who teach them."
+      },
+      {
+        "title": "Family Party",
+        "description": "Youngsters stay with parents for a year, forming colorful feeding flocks that chatter like excited kids at a playground."
+      }
+    ]
   },
   "flame-robin": {
     "name": "Flame Robin",
     "latin": "Petroica phoenicea",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A small bird with a fiery orange chest that looks like a living ember hopping through the undergrowth.",
+    "facts": [
+      {
+        "title": "Mountain Nomad",
+        "description": "They summer in snowy highlands then migrate to valleys - tiny mountaineers with feathery snow boots!"
+      },
+      {
+        "title": "Love Glow",
+        "description": "Males' chests turn brighter orange when seeking mates - like putting on a neon 'date me' sign!"
+      },
+      {
+        "title": "Ground Sniper",
+        "description": "They perch low, then drop silently onto unsuspecting insects - pouncing with ninja-like precision."
+      },
+      {
+        "title": "Dawn Serenader",
+        "description": "Males sing sweet melodies from fence posts at sunrise - nature's alarm clock with feathers."
+      },
+      {
+        "title": "Flash and Hide",
+        "description": "When predators approach, they flash white tail feathers as distraction signals before vanishing."
+      }
+    ]
   },
   "gang-gang-cockatoo": {
     "name": "Gang-gang Cockatoo",
     "latin": "Callocephalon fimbriatum",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A quirky grey cockatoo where males sport punk-rock red heads and make sounds like creaky doors.",
+    "facts": [
+      {
+        "title": "ACT Superstar",
+        "description": "Official bird emblem of Australia's capital - they're feathered celebrities in Canberra!"
+      },
+      {
+        "title": "Squeaky Toy",
+        "description": "Their call sounds exactly like a rusty gate - nature's comedy sound effect artists!"
+      },
+      {
+        "title": "Berry Lover",
+        "description": "They twist berries off stems with foot-beak teamwork while hanging like acrobatic fruit bats."
+      },
+      {
+        "title": "Alpine Adventurer",
+        "description": "One of few parrots that thrives in snowy mountains - wearing fluffy feather coats against the cold."
+      },
+      {
+        "title": "Treehouse Family",
+        "description": "They return to the exact same tree hollow for decades, passing 'family homes' through generations."
+      }
+    ]
   },
   "galah": {
     "name": "Galah",
     "latin": "Eolophus roseicapilla",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A pink-and-grey acrobat often seen doing playful mid-air somersaults in huge chattering flocks.",
+    "facts": [
+      {
+        "title": "Sky Dancer",
+        "description": "They celebrate rain with aerial cartwheels - tumbling through air like feathered gymnasts!"
+      },
+      {
+        "title": "Bulldozer Beak",
+        "description": "They dig up roots with powerful beaks while standing on one foot - like pink feathered excavators."
+      },
+      {
+        "title": "City Slicker",
+        "description": "They've mastered traffic patterns, safely crossing roads by hopping between cars at red lights!"
+      },
+      {
+        "title": "Silly Billy",
+        "description": "Australians call foolish people 'galahs' because these birds do hilarious things like hanging upside down just for fun!"
+      },
+      {
+        "title": "Lovebirds",
+        "description": "Partners preen each other daily and share food - they even blush pinker when reunited after separations!"
+      }
+    ]
   },
   "laughing-kookaburra": {
     "name": "Laughing Kookaburra",
     "latin": "Dacelo novaeguineae",
-    "description": "The laughing kookaburra is a large terrestrial tree kingfisher native to eastern Australia.",
-    "habitat": "Woodland territories, open eucalyptus forests, and park lands.",
-    "diet": "Carnivorous, eating mice, snakes, insects, small reptiles, and the young of other birds.",
-    "funFacts": [
-      "Known for its distinctive laughing call",
-      "Can live for up to 20 years in the wild"
+    "description": "A stout kingfisher with a legendary laugh that sounds like a rollicking jungle chorus.",
+    "facts": [
+      {
+        "title": "Breakfast Alarm",
+        "description": "Families 'laugh' together at dawn - the original Australian wake-up call for miles around!"
+      },
+      {
+        "title": "Snake Hunter",
+        "description": "They grab venomous snakes behind the head and bash them against branches - feathered warriors!"
+      },
+      {
+        "title": "Movie Star",
+        "description": "Their laugh features in jungle films worldwide - even in Africa where they don't live!"
+      },
+      {
+        "title": "Territory Boss",
+        "description": "Families defend territories for generations with special laughs that say: 'This is OUR land!'"
+      },
+      {
+        "title": "Patient Fisher",
+        "description": "They perch motionless for hours, then dive like feathered torpedoes to snatch fish from streams."
+      }
     ]
   },
   "noisy-friarbird": {
     "name": "Noisy Friarbird",
     "latin": "Philemon corniculatus",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A bald-headed honeyeater that sounds like a cackling witch when chasing rivals through treetops.",
+    "facts": [
+      {
+        "title": "Bald Power",
+        "description": "Their bare black head prevents sticky nectar from gluing feathers - nature's ingenious kitchen hack!"
+      },
+      {
+        "title": "Noise Champion",
+        "description": "Their raucous 'cackle-gargle' calls carry over 500m - the loudest song in the honeyeater family!"
+      },
+      {
+        "title": "Flower Bandit",
+        "description": "They pierce flower bases to 'steal' nectar without pollinating - garden thieves in feathers!"
+      },
+      {
+        "title": "Feather Gang",
+        "description": "They lead mixed bird flocks through forests, shouting orders like feathery drill sergeants."
+      },
+      {
+        "title": "Fruit Fighter",
+        "description": "They battle possums for figs at night, cackling furiously while wrestling for juicy prizes!"
+      }
+    ]
   },
   "pied-currawong": {
     "name": "Pied Currawong",
     "latin": "Strepera graculina",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A bold black-and-white songster with haunting flute-like calls echoing through misty forests.",
+    "facts": [
+      {
+        "title": "Mystery Musician",
+        "description": "Their beautiful 'curra-wong' calls sound like wooden flutes playing in hidden mountain valleys."
+      },
+      {
+        "title": "Egg Hunter",
+        "description": "They sneak into nests when parents are away, swallowing eggs whole like feathery pirates!"
+      },
+      {
+        "title": "Winter Wanderers",
+        "description": "In cold months, they form huge flocks that descend on towns like feathered snowstorms."
+      },
+      {
+        "title": "Fruit Lover",
+        "description": "They gorge on berries until drunk, then wobble on branches singing slurred songs!"
+      },
+      {
+        "title": "Nature's Cleaner",
+        "description": "They clean roads by eating roadkill insects - feathered street sweepers with beautiful voices!"
+      }
+    ]
   },
   "rainbow-lorikeet": {
     "name": "Rainbow Lorikeet",
     "latin": "Trichoglossus moluccanus",
-    "description": "The rainbow lorikeet is a species of parrot found in Australia. It is common along the eastern seaboard, from northern Queensland to South Australia.",
-    "habitat": "Rainforests, coastal bushes and woodland areas.",
-    "diet": "Primarily nectar and pollen, but also fruits, seeds and some insects.",
-    "funFacts": [
-      "Known for their bright coloration and noisy calls",
-      "They have a brush-tipped tongue for feeding on nectar"
+    "description": "A living kaleidoscope that flashes through trees in noisy, quarrelsome flocks.",
+    "facts": [
+      {
+        "title": "Nectar Toothbrush",
+        "description": "Their tongue has tiny brushes on the tip that soak up nectar like a feathery drinking straw!"
+      },
+      {
+        "title": "Color Splash",
+        "description": "Their rainbow feathers aren't just pretty - they blend perfectly with colorful flowers while feeding!"
+      },
+      {
+        "title": "Fruit Vandals",
+        "description": "They ravage orchards, piercing hundreds of fruits daily just for tiny sips - messy eaters!"
+      },
+      {
+        "title": "Apartment Nester",
+        "description": "In cities, they nest inside building walls - squawky tenants who never pay rent!"
+      },
+      {
+        "title": "Play Fighters",
+        "description": "They hang upside down to wrestle friends with soft beak nibbles - like feathery MMA fighters!"
+      }
     ]
   },
   "red-wattlebird": {
     "name": "Red Wattlebird",
     "latin": "Anthochaera carunculata",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A large, bossy honeyeater with red face wattles that dangle like quirky earrings.",
+    "facts": [
+      {
+        "title": "Wiggle Wattles",
+        "description": "They shake red face wattles during courtship dances - like feathered hula dancers!"
+      },
+      {
+        "title": "Nectar Robber",
+        "description": "They pierce flower bases to steal nectar without pollinating - garden rebels with wattles!"
+      },
+      {
+        "title": "Noisy Neighbor",
+        "description": "Their 'cookay-cok' calls sound like squeaky pumps - nature's alarm system at dawn!"
+      },
+      {
+        "title": "Berry Gobbler",
+        "description": "They swallow whole berries then later cough up seeds - helping forests grow new trees!"
+      },
+      {
+        "title": "Feather Bodyguard",
+        "description": "They aggressively chase hawks away from gardens - tiny but fierce protectors!"
+      }
+    ]
   },
   "spotted-pardalote": {
     "name": "Spotted Pardalote",
     "latin": "Pardalotus punctatus",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "Australia's tiniest gem - a jeweled bird smaller than a mouse with starry spots on its wings.",
+    "facts": [
+      {
+        "title": "Flying Diamonds",
+        "description": "Their wings sparkle with white spots like starry constellations against forest shadows."
+      },
+      {
+        "title": "Tunnel Engineer",
+        "description": "They dig 1m long tunnels in riverbanks for nests - tiny feathered miners with pick-axe beaks!"
+      },
+      {
+        "title": "Treetop Diner",
+        "description": "They only eat while hanging upside down under leaves - nature's acrobatic snackers!"
+      },
+      {
+        "title": "Secret Song",
+        "description": "Their soft 'sleep-may-beetle' song sounds like a sleepy child whispering secrets."
+      },
+      {
+        "title": "Speedy Flicker",
+        "description": "They move so fast through treetops, they look like flashing Christmas lights in the canopy!"
+      }
+    ]
   },
   "superb-fairywren": {
     "name": "Superb Fairywren",
     "latin": "Malurus cyaneus",
-    "description": "The superb fairywren is a passerine bird in the Australasian wren family, Maluridae.",
-    "habitat": "Found in almost any area that has at least a little dense undergrowth for shelter.",
-    "diet": "Mainly insectivorous, feeding on a wide range of small creatures.",
-    "funFacts": [
-      "Males have a brilliant blue and black plumage during breeding season",
-      "They are socially monogamous and sexually promiscuous"
+    "description": "A tiny electric-blue dancer that pops against green grass like a living sapphire.",
+    "facts": [
+      {
+        "title": "Costume Change",
+        "description": "Males transform from brown to brilliant blue for dating season - nature's quick-change artists!"
+      },
+      {
+        "title": "Secret Admirers",
+        "description": "Females sneak off to meet 'boyfriend' wrens while their main partner guards the nest!"
+      },
+      {
+        "title": "Grasshopper Alarm",
+        "description": "They make special 'trill' calls to warn friends about predators - feathery security guards!"
+      },
+      {
+        "title": "Spiderweb Fashion",
+        "description": "They decorate nests with spiderwebs and flower petals - feathered interior designers!"
+      },
+      {
+        "title": "Follow the Leader",
+        "description": "They hop behind kangaroos catching insects stirred up by their feet - clever hitchhikers!"
+      }
     ]
   },
   "sulphur-crested-cockatoo": {
     "name": "Sulphur-crested Cockatoo",
     "latin": "Cacatua galerita",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A bold white parrot with a sunshine-yellow crown that loves showing off with ear-splitting screeches.",
+    "facts": [
+      {
+        "title": "Crest Communicator",
+        "description": "They raise their yellow crown when excited - like feathered mood rings showing their feelings!"
+      },
+      {
+        "title": "Bin Bandits",
+        "description": "In cities, they teach each other to open trash bins - feathery hackers in broad daylight!"
+      },
+      {
+        "title": "Wood Chewer",
+        "description": "Their super-strong beaks can demolish wooden decks - nature's feathery chainsaws!"
+      },
+      {
+        "title": "Dance Party",
+        "description": "They bob heads and spread wings in synchronized group dances - feathered flash mob performers!"
+      },
+      {
+        "title": "Lifelong Friends",
+        "description": "They live 70+ years, recognizing human friends decades later with excited squawks!"
+      }
+    ]
   },
   "tawny-frogmouth": {
     "name": "Tawny Frogmouth",
     "latin": "Podargus strigoides",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A master of disguise that freezes like a broken branch, with huge frog-like eyes for night hunting.",
+    "facts": [
+      {
+        "title": "Hide and Seek Champ",
+        "description": "They point beaks upward and close eyes to slits - becoming near-invisible tree extensions!"
+      },
+      {
+        "title": "Bug Zapper",
+        "description": "They catch moths mid-air with their huge beaks - nature's silent night-time vacuum cleaners!"
+      },
+      {
+        "title": "Not an Owl!",
+        "description": "Despite appearances, they're related to nightjars and catch prey with beaks, not talons."
+      },
+      {
+        "title": "Love Sticks",
+        "description": "Mates groom each other with special 'love sticks' they find and present as gifts!"
+      },
+      {
+        "title": "Tree Hugger",
+        "description": "Chicks hug branches with wings spread flat - looking like adorable feathery pancakes!"
+      }
+    ]
   },
   "welcome-swallow": {
     "name": "Welcome Swallow",
     "latin": "Hirundo neoxena",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A speedy blue acrobat with forked tail streamers that twist through air like feathered fighter jets.",
+    "facts": [
+      {
+        "title": "Mud Architect",
+        "description": "They build nests from 1,000+ mud pellets - tiny feathered bricklayers crafting cozy homes!"
+      },
+      {
+        "title": "Wind Rider",
+        "description": "They fly 35 km/h while making sharp 90-degree turns to catch insects mid-air!"
+      },
+      {
+        "title": "Barn Buddy",
+        "description": "They nest inside barns and sheds, eating flies that bother livestock - farmers' feathery friends!"
+      },
+      {
+        "title": "Ocean Crosser",
+        "description": "Some migrate 2,500km from Tasmania to New Guinea - tiny birds crossing vast oceans!"
+      },
+      {
+        "title": "Dust Bather",
+        "description": "They flutter in dirt roads to clean feathers - taking happy dust baths like feathered spa lovers!"
+      }
+    ]
   },
   "white-throated-treecreeper": {
     "name": "White-throated Treecreeper",
     "latin": "Cormobates leucophaea",
-    "description": "TODO",
-    "habitat": "TODO",
-    "diet": "TODO",
-    "funFacts": ["TODO"]
+    "description": "A tree-trunk detective that spirals upward while probing bark crevices with its curved beak.",
+    "facts": [
+      {
+        "title": "Bark Inspector",
+        "description": "They only climb upward on trees, hopping down to restart - nature's feathered spiral stair climbers!"
+      },
+      {
+        "title": "Tail Prop",
+        "description": "Stiff tail feathers act as kickstands against tree trunks - built-in climbing gear!"
+      },
+      {
+        "title": "Forest Doctor",
+        "description": "They eat harmful tree-boring insects - feathered forest medics saving sick trees!"
+      },
+      {
+        "title": "Secret Whistler",
+        "description": "Mates sing soft duets while climbing together - like whispering sweet nothings up tree trunks!"
+      },
+      {
+        "title": "Cavity Sleeper",
+        "description": "They sleep jammed into narrow bark crevices - cozy feathery wedges in nature's tree pockets!"
+      }
+    ]
   },
   "willie-wagtail": {
     "name": "Willie Wagtail",
     "latin": "Rhipidura leucophrys",
-    "description": "The willie wagtail is a passerine bird native to Australia, New Guinea, the Solomon Islands, the Bismarck Archipelago, and eastern Indonesia.",
-    "habitat": "Found in most open habitats, especially around human habitation and in urban areas.",
-    "diet": "Mostly insectivorous, catching insects mid-air or on the ground.",
-    "funFacts": [
-      "Known for its fan-like tail that it swings from side to side",
-      "Bold for its size, often seen chasing away larger birds"
+    "description": "A feisty little dancer with a constantly wiggling tail that chases away birds 10 times its size!",
+    "facts": [
+      {
+        "title": "Tail Talker",
+        "description": "They wag tails side-to-side to scare insects into moving - like feathery fishing lures!"
+      },
+      {
+        "title": "Fearless Fighter",
+        "description": "They dive-bomb eagles and kookaburras - tiny ninjas protecting their turf!"
+      },
+      {
+        "title": "Campfire Friend",
+        "description": "They follow campers to catch insects stirred by footsteps - nature's cleanup crew!"
+      },
+      {
+        "title": "Mirror Warrior",
+        "description": "They attack car mirrors, thinking reflections are rivals - feathered knights jousting with reflections!"
+      },
+      {
+        "title": "Moonlight Singer",
+        "description": "On bright nights, they sing sweet songs from rooftops - feathery midnight troubadours!"
+      }
     ]
   }
 }

@@ -13,7 +13,7 @@ const next = nextBird.get();
 ---
 
 <div class="bird-schedule">
-  <h2>Today's Schedule</h2>
+  <h2>Today’s schedule</h2>
   <p id="current-time">Current Time: {time}</p>
   <ul id="schedule-list">
     {
@@ -53,7 +53,7 @@ const next = nextBird.get();
     nextBird,
   } from "../stores/birdTimeStore";
 
-  let unsubscribers = [];
+  let unsubscribers: (() => void)[] = [];
 
   function updateSchedule() {
     const scheduleList = document.getElementById("schedule-list");

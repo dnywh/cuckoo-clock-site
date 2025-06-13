@@ -18,10 +18,13 @@ export interface BirdInfo {
 }
 
 export const currentTime = atom<string>("");
-export const currentMonth = atom<string>("");
+export const currentMonth = atom<number>(1);
 export const currentBird = atom<BirdInfo | null>(null);
 export const nextBird = atom<BirdInfo | null>(null);
 export const daySchedule = map<Record<string, BirdInfo>>({});
+
+type MonthSchedule = { bird: string; time: string }[];
+type Months = Record<string, MonthSchedule>;
 
 function getCurrentTime() {
   return new Date();
@@ -34,7 +37,8 @@ function updateStore() {
   currentTime.set(time);
   currentMonth.set(month);
 
-  const monthSchedule = months[month] || [];
+  const monthKey = month.toString();
+  const monthSchedule = (months as Months)[monthKey] || [];
   const schedule: BirdInfo[] = monthSchedule.map(({ bird, time }) => ({
     slug: bird,
     name: mergedBirdData[bird].name,
@@ -102,10 +106,10 @@ if (typeof window !== "undefined") {
 }
 
 // Development mode logging
-if (import.meta.env.DEV) {
-  currentTime.listen((time) => console.log("Current time updated:", time));
-  currentBird.listen((bird) =>
-    console.log("Current bird updated:", bird?.name)
-  );
-  nextBird.listen((bird) => console.log("Next bird updated:", bird?.name));
-}
+// if (import.meta.env.DEV) {
+//   currentTime.listen((time) => console.log("Current time updated:", time));
+//   currentBird.listen((bird) =>
+//     console.log("Current bird updated:", bird?.name)
+//   );
+//   nextBird.listen((bird) => console.log("Next bird updated:", bird?.name));
+// }

@@ -45,7 +45,7 @@ import Card from "../components/Card.astro";
     const bird = currentBird.get();
 
     if (bird) {
-      birdInfoElement.innerHTML = `Current bird: ${bird.name}`;
+      birdInfoElement.innerHTML = `Current bird: ${bird.name}. Redirecting...`;
       // Clear any existing timeout
       if (redirectTimeout) {
         clearTimeout(redirectTimeout);

@@ -22,7 +22,7 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const mergedBirdData = getMergedBirdData();
 const bird = mergedBirdData[slug];
-console.log({ bird });
+// console.log({ bird });
 
 // Handle case where bird doesn't exist
 if (!bird) {
@@ -32,13 +32,13 @@ if (!bird) {
 
 <Layout title={bird.name}>
   <main>
-    <aside>
+    <!-- <aside>
       <Card
         href={slug}
         title=`Hello from [slug].astro`
         body=`This is my bird slug page, currently showing ${slug}`
       />
-    </aside>
+    </aside> -->
 
     <ThreeScene
       imageSlug=`${bird.slug}.jpg`
@@ -47,29 +47,14 @@ if (!bird) {
 
     <header>
       <h1>{bird.name}</h1>
-      <p>{bird.latin}</p>
+      <p><small>{bird.latin}</small></p>
+      <p>{bird.description}</p>
     </header>
 
-    <p>Habitat: {bird.habitat}</p>
-    <p>Description: {bird.description}</p>
-    <p>Diet: {bird.diet}</p>
-
-    {
-      bird.funFacts && bird.funFacts.length > 0 && (
-        <>
-          <h2>Fun Facts</h2>
-          <ul>
-            {bird.funFacts.map((fact) => (
-              <li>{fact}</li>
-            ))}
-          </ul>
-        </>
-      )
-    }
     {
       bird.images && bird.images.length > 0 && (
-        <>
-          <h2>Images</h2>
+        <section>
+          <h2>What I look like</h2>
           {bird.images.map((image) => (
             <figure>
               <Image
@@ -79,11 +64,50 @@ if (!bird) {
                 height="140"
               />
               <figcaption>
-                Photo by <a href={image.source}>{image.author}</a>
+                Uploaded by <em>{image.author}</em> on{" "}
+                <a href={image.source.url}>{image.source.title}</a>.
+                <br />
+                {image.caption}
               </figcaption>
             </figure>
           ))}
-        </>
+        </section>
+      )
+    }
+
+    {
+      bird.sounds && bird.sounds.length > 0 && (
+        <section>
+          <h2>How I sound</h2>
+          {bird.sounds.map((sound) => (
+            <figure>
+              <audio controls src={`/sounds/${sound.file}.mp3`} />
+              When I {sound.description}
+              <figcaption>
+                Uploaded by <em>{sound.author}</em> on{" "}
+                <a href={sound.source.url}>{sound.source.title}</a>.
+                <br />
+                <a href={sound.license.url}>{sound.license.type}</a>
+              </figcaption>
+            </figure>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      bird.facts && bird.facts.length > 0 && (
+        <section>
+          <h2>Fun facts about me</h2>
+          <ul>
+            {bird.facts.map((fact) => (
+              <li>
+                <h3>{fact.title}</h3>
+                <p>{fact.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
       )
     }
   </main>
