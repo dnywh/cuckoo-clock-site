@@ -1,4 +1,72 @@
 {
+  "australian-king-parrot": {
+    "name": "Australian King Parrot",
+    "latin": "Alisterus scapularis",
+    "description": "TODO.",
+    "sounds": [
+      {
+        "file": "XC30640",
+        "author": "Vicki Powys",
+        "description": "squawk",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/30640"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC146124",
+        "author": "Marc Anderson",
+        "description": "take flight",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/146124"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC172017",
+        "author": "Marc Anderson",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/172017"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
+    "facts": [
+      {
+        "title": "TODO",
+        "description": "TODO"
+      },
+      {
+        "title": "TODO",
+        "description": "TODO"
+      },
+      {
+        "title": "TODO",
+        "description": "TODO"
+      },
+      {
+        "title": "TODO",
+        "description": "TODO"
+      },
+      {
+        "title": "TODO",
+        "description": "TODO"
+      }
+    ]
+  },
   "australian-magpie": {
     "name": "Australian Magpie",
     "latin": "Gymnorhina tibicen",
@@ -67,7 +135,7 @@
     "facts": [
       {
         "title": "Awesome Imitator",
-        "description": "Magpies can mimic car alarms, barking dogs, and even human speech - they're nature's feathered sound machines!"
+        "description": "Magpies can mimic car alarms, barking dogs, and even human speech - they're nature’s feathered sound machines!"
       },
       {
         "title": "Melodic Master",
@@ -91,10 +159,51 @@
     "name": "Black-faced Cuckooshrike",
     "latin": "Coracina novaehollandiae",
     "description": "A sleek grey bird with a mysterious black mask, famous for its smooth gliding flights.",
+    "sounds": [
+      {
+        "file": "XC383169",
+        "author": "Marc Anderson",
+        "description": "make a flight call",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/383169"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC596534",
+        "author": "Marc Anderson",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/596534"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC689108",
+        "author": "Marc Anderson",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/689108"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Hybrid Appearance",
-        "description": "Named for its mix of cuckoo-like wings and shrike-like beak - nature's perfect combo!"
+        "description": "Named for its mix of cuckoo-like wings and shrike-like beak - nature’s perfect combo!"
       },
       {
         "title": "Urban Glider",
@@ -118,10 +227,51 @@
     "name": "Crimson Rosella",
     "latin": "Platycercus elegans",
     "description": "A brilliantly colored parrot that looks like a flying rainbow against green forests.",
+    "sounds": [
+      {
+        "file": "XC146136",
+        "author": "Marc Anderson",
+        "description": "make a soft chatter",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/146136"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC171950",
+        "author": "Marc Anderson",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/171950"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC677472",
+        "author": "Nick Talbot",
+        "description": "chat with friends",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/677472"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Colour Changers",
-        "description": "Babies wear green camouflage jackets before transforming into dazzling red-and-blue adults - nature's glow-up!"
+        "description": "Babies wear green camouflage jackets before transforming into dazzling red-and-blue adults - nature’s glow-up!"
       },
       {
         "title": "Mountain Acrobat",
@@ -141,10 +291,119 @@
       }
     ]
   },
+  "eastern-spinebill": {
+    "name": "Eastern Spinebill",
+    "latin": "Acanthorhynchus tenuirostris",
+    "description": "TODO",
+    "sounds": [
+      {
+        "file": "XC171970",
+        "author": "Marc Anderson",
+        "description": "make a quick pip",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/171970"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC269691",
+        "author": "Marc Anderson",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/269691"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC375294",
+        "author": "Greg McLachlan",
+        "description": "sing with friends",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/375294"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      }
+    ],
+    "facts": [
+      {
+        "title": "TODO",
+        "description": "TODO"
+      },
+      {
+        "title": "TODO",
+        "description": "TODO"
+      },
+      {
+        "title": "TODO",
+        "description": "TODO"
+      },
+      {
+        "title": "TODO",
+        "description": "TODO"
+      },
+      {
+        "title": "TODO",
+        "description": "TODO"
+      }
+    ]
+  },
   "flame-robin": {
     "name": "Flame Robin",
     "latin": "Petroica phoenicea",
     "description": "A small bird with a fiery orange chest that looks like a living ember hopping through the undergrowth.",
+    "sounds": [
+      {
+        "file": "XC30876",
+        "author": "Vicki Powys",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/30876"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC366978",
+        "author": "Frank Lambert",
+        "description": "sing with friends",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/366978"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC860043",
+        "author": "Peter Boesman",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/860043"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Mountain Nomad",
@@ -160,7 +419,7 @@
       },
       {
         "title": "Dawn Serenader",
-        "description": "Males sing sweet melodies from fence posts at sunrise - nature's alarm clock with feathers."
+        "description": "Males sing sweet melodies from fence posts at sunrise - nature’s alarm clock with feathers."
       },
       {
         "title": "Flash and Hide",
@@ -168,37 +427,51 @@
       }
     ]
   },
-  "gang-gang-cockatoo": {
-    "name": "Gang-gang Cockatoo",
-    "latin": "Callocephalon fimbriatum",
-    "description": "A quirky grey cockatoo where males sport punk-rock red heads and make sounds like creaky doors.",
-    "facts": [
-      {
-        "title": "ACT Superstar",
-        "description": "Official bird emblem of Australia's capital - they're feathered celebrities in Canberra!"
-      },
-      {
-        "title": "Squeaky Toy",
-        "description": "Their call sounds exactly like a rusty gate - nature's comedy sound effect artists!"
-      },
-      {
-        "title": "Berry Lover",
-        "description": "They twist berries off stems with foot-beak teamwork while hanging like acrobatic fruit bats."
-      },
-      {
-        "title": "Alpine Adventurer",
-        "description": "One of few parrots that thrives in snowy mountains - wearing fluffy feather coats against the cold."
-      },
-      {
-        "title": "Treehouse Family",
-        "description": "They return to the exact same tree hollow for decades, passing 'family homes' through generations."
-      }
-    ]
-  },
   "galah": {
     "name": "Galah",
     "latin": "Eolophus roseicapilla",
     "description": "A pink-and-grey acrobat often seen doing playful mid-air somersaults in huge chattering flocks.",
+    "sounds": [
+      {
+        "file": "XC97324",
+        "author": "Patrik Åberg",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/97324"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC328082",
+        "author": "Andrew Spencer",
+        "description": "fly around a lake with friends",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/328082"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC684930",
+        "author": "James Lambert",
+        "description": "make a flight call",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/684930"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Sky Dancer",
@@ -222,10 +495,119 @@
       }
     ]
   },
+  "gang-gang-cockatoo": {
+    "name": "Gang-gang Cockatoo",
+    "latin": "Callocephalon fimbriatum",
+    "description": "A quirky grey cockatoo where males sport punk-rock red heads and make sounds like creaky doors.",
+    "sounds": [
+      {
+        "file": "XC187882",
+        "author": "Nick Talbot",
+        "description": "perch with friends",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/187882"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      },
+      {
+        "file": "XC263800",
+        "author": "Greg McLachlan",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/263800"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC859715",
+        "author": "Peter Boesman",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/859715"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
+    "facts": [
+      {
+        "title": "ACT Superstar",
+        "description": "Official bird emblem of Australia's capital - they're feathered celebrities in Canberra!"
+      },
+      {
+        "title": "Squeaky Toy",
+        "description": "Their call sounds exactly like a rusty gate - nature’s comedy sound effect artists!"
+      },
+      {
+        "title": "Berry Lover",
+        "description": "They twist berries off stems with foot-beak teamwork while hanging like acrobatic fruit bats."
+      },
+      {
+        "title": "Alpine Adventurer",
+        "description": "One of few parrots that thrives in snowy mountains - wearing fluffy feather coats against the cold."
+      },
+      {
+        "title": "Treehouse Family",
+        "description": "They return to the exact same tree hollow for decades, passing 'family homes' through generations."
+      }
+    ]
+  },
   "laughing-kookaburra": {
     "name": "Laughing Kookaburra",
     "latin": "Dacelo novaeguineae",
     "description": "A stout kingfisher with a legendary laugh that sounds like a rollicking jungle chorus.",
+    "sounds": [
+      {
+        "file": "XC287327",
+        "author": "Marc Anderson",
+        "description": "sing at dusk",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/287327"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC716894",
+        "author": "Sreekar",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/716894"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      },
+      {
+        "file": "XC717137",
+        "author": "Sreekar",
+        "description": "laugh with friends",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/717137"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Breakfast Alarm",
@@ -253,18 +635,59 @@
     "name": "Noisy Friarbird",
     "latin": "Philemon corniculatus",
     "description": "A bald-headed honeyeater that sounds like a cackling witch when chasing rivals through treetops.",
+    "sounds": [
+      {
+        "file": "XC201480",
+        "author": "Marc Anderson",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/201480"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC269675",
+        "author": "Marc Anderson",
+        "description": "sing out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/269675"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC831891",
+        "author": "Sreekar",
+        "description": "call friends",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/831891"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Bald Power",
-        "description": "Their bare black head prevents sticky nectar from gluing feathers - nature's ingenious kitchen hack!"
+        "description": "Their bare black head prevents sticky nectar from gluing feathers. Nature’s ingenious kitchen hack!"
       },
       {
         "title": "Noise Champion",
-        "description": "Their raucous 'cackle-gargle' calls carry over 500m - the loudest song in the honeyeater family!"
+        "description": "Their raucous ‘cackle-gargle’ calls carry over 500m. That’s the loudest song in the honeyeater family!"
       },
       {
         "title": "Flower Bandit",
-        "description": "They pierce flower bases to 'steal' nectar without pollinating - garden thieves in feathers!"
+        "description": "They pierce flower bases to ‘steal’ nectar without pollinating. Garden thieves in feathers!"
       },
       {
         "title": "Feather Gang",
@@ -280,6 +703,47 @@
     "name": "Pied Currawong",
     "latin": "Strepera graculina",
     "description": "A bold black-and-white songster with haunting flute-like calls echoing through misty forests.",
+    "sounds": [
+      {
+        "file": "XC201453",
+        "author": "Marc Anderson",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/201453"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC310588",
+        "author": "Darrell Logan",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/310588"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      },
+      {
+        "file": "XC327858",
+        "author": "Marc Anderson",
+        "description": "sing as water trickles",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/327858"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Mystery Musician",
@@ -298,7 +762,7 @@
         "description": "They gorge on berries until drunk, then wobble on branches singing slurred songs!"
       },
       {
-        "title": "Nature's Cleaner",
+        "title": "nature’s Cleaner",
         "description": "They clean roads by eating roadkill insects - feathered street sweepers with beautiful voices!"
       }
     ]
@@ -307,6 +771,35 @@
     "name": "Rainbow Lorikeet",
     "latin": "Trichoglossus moluccanus",
     "description": "A living kaleidoscope that flashes through trees in noisy, quarrelsome flocks.",
+    "sounds": [
+      {
+        "file": "ML233585",
+        "author": "Tony Baylis",
+        "description": "call out",
+        "source": {
+          "title": "Macaulay Library",
+          "url": "https://macaulaylibrary.org/asset/233585"
+        }
+      },
+      {
+        "file": "ML123512141-1",
+        "author": "Kent Warner",
+        "description": "call out",
+        "source": {
+          "title": "Macaulay Library",
+          "url": "https://macaulaylibrary.org/asset/123512141"
+        }
+      },
+      {
+        "file": "ML123512141-2",
+        "author": "Kent Warner",
+        "description": "call out",
+        "source": {
+          "title": "Macaulay Library",
+          "url": "https://macaulaylibrary.org/asset/123512141"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Nectar Toothbrush",
@@ -334,26 +827,67 @@
     "name": "Red Wattlebird",
     "latin": "Anthochaera carunculata",
     "description": "A large, bossy honeyeater with red face wattles that dangle like quirky earrings.",
+    "sounds": [
+      {
+        "file": "XC201466",
+        "author": "Marc Anderson",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/201466"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC512379",
+        "author": "Karen Wosilait",
+        "description": "make a quick shriek",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/512379"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      },
+      {
+        "file": "XC715147",
+        "author": "Khristos Nizamis",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/715147"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Wiggle Wattles",
-        "description": "They shake red face wattles during courtship dances - like feathered hula dancers!"
+        "description": "They shake their red face wattles during courtship dances, like feathered hula dancers!"
       },
       {
         "title": "Nectar Robber",
-        "description": "They pierce flower bases to steal nectar without pollinating - garden rebels with wattles!"
+        "description": "They pierce flower bases to steal nectar without pollinating. Garden rebels with wattles!"
       },
       {
         "title": "Noisy Neighbor",
-        "description": "Their 'cookay-cok' calls sound like squeaky pumps - nature's alarm system at dawn!"
+        "description": "Their ‘cookay-cok’ calls sound like squeaky pumps. Nature’s alarm system at dawn!"
       },
       {
         "title": "Berry Gobbler",
-        "description": "They swallow whole berries then later cough up seeds - helping forests grow new trees!"
+        "description": "They swallow whole berries then later cough up seeds, helping forests grow new trees!"
       },
       {
         "title": "Feather Bodyguard",
-        "description": "They aggressively chase hawks away from gardens - tiny but fierce protectors!"
+        "description": "They aggressively chase hawks away from gardens. Tiny but fierce protectors!"
       }
     ]
   },
@@ -361,6 +895,47 @@
     "name": "Spotted Pardalote",
     "latin": "Pardalotus punctatus",
     "description": "Australia's tiniest gem - a jeweled bird smaller than a mouse with starry spots on its wings.",
+    "sounds": [
+      {
+        "file": "XC200382",
+        "author": "Marc Anderson",
+        "description": "make a quick pip",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/200382"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC390578",
+        "author": "Marc Anderson",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/390578"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC673382",
+        "author": "Marc Anderson",
+        "description": "sing with friends",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/673382"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Flying Diamonds",
@@ -372,7 +947,7 @@
       },
       {
         "title": "Treetop Diner",
-        "description": "They only eat while hanging upside down under leaves - nature's acrobatic snackers!"
+        "description": "They only eat while hanging upside down under leaves - nature’s acrobatic snackers!"
       },
       {
         "title": "Secret Song",
@@ -384,14 +959,123 @@
       }
     ]
   },
+  "sulphur-crested-cockatoo": {
+    "name": "Sulphur-crested Cockatoo",
+    "latin": "Cacatua galerita",
+    "description": "A bold white parrot with a sunshine-yellow crown that loves showing off with ear-splitting screeches.",
+    "sounds": [
+      {
+        "file": "XC594995",
+        "author": "Simon Elliott",
+        "description": "make a flight call",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/594995"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC646140",
+        "author": "James Lambert",
+        "description": "make a flight call",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/646140"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC759468",
+        "author": "James Lambert",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/759468"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
+    "facts": [
+      {
+        "title": "Crest Communicator",
+        "description": "They raise their yellow crown when excited - like feathered mood rings showing their feelings!"
+      },
+      {
+        "title": "Bin Bandits",
+        "description": "In cities, they teach each other to open trash bins - feathery hackers in broad daylight!"
+      },
+      {
+        "title": "Wood Chewer",
+        "description": "Their super-strong beaks can demolish wooden decks - nature’s feathery chainsaws!"
+      },
+      {
+        "title": "Dance Party",
+        "description": "They bob heads and spread wings in synchronized group dances - feathered flash mob performers!"
+      },
+      {
+        "title": "Lifelong Friends",
+        "description": "They live 70+ years, recognizing human friends decades later with excited squawks!"
+      }
+    ]
+  },
   "superb-fairywren": {
     "name": "Superb Fairywren",
     "latin": "Malurus cyaneus",
     "description": "A tiny electric-blue dancer that pops against green grass like a living sapphire.",
+    "sounds": [
+      {
+        "file": "XC201471",
+        "author": "Marc Anderson",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/201471"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC278419",
+        "author": "Marc Anderson",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/278419"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC576506",
+        "author": "Marc Anderson",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/576506"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Costume Change",
-        "description": "Males transform from brown to brilliant blue for dating season - nature's quick-change artists!"
+        "description": "Males transform from brown to brilliant blue for dating season - nature’s quick-change artists!"
       },
       {
         "title": "Secret Admirers",
@@ -411,45 +1095,59 @@
       }
     ]
   },
-  "sulphur-crested-cockatoo": {
-    "name": "Sulphur-crested Cockatoo",
-    "latin": "Cacatua galerita",
-    "description": "A bold white parrot with a sunshine-yellow crown that loves showing off with ear-splitting screeches.",
-    "facts": [
-      {
-        "title": "Crest Communicator",
-        "description": "They raise their yellow crown when excited - like feathered mood rings showing their feelings!"
-      },
-      {
-        "title": "Bin Bandits",
-        "description": "In cities, they teach each other to open trash bins - feathery hackers in broad daylight!"
-      },
-      {
-        "title": "Wood Chewer",
-        "description": "Their super-strong beaks can demolish wooden decks - nature's feathery chainsaws!"
-      },
-      {
-        "title": "Dance Party",
-        "description": "They bob heads and spread wings in synchronized group dances - feathered flash mob performers!"
-      },
-      {
-        "title": "Lifelong Friends",
-        "description": "They live 70+ years, recognizing human friends decades later with excited squawks!"
-      }
-    ]
-  },
   "tawny-frogmouth": {
     "name": "Tawny Frogmouth",
     "latin": "Podargus strigoides",
     "description": "A master of disguise that freezes like a broken branch, with huge frog-like eyes for night hunting.",
+    "sounds": [
+      {
+        "file": "XC200413",
+        "author": "Marc Anderson",
+        "description": "hoot",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/200413"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC643067",
+        "author": "Nick Talbot",
+        "description": "call with the frogs",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/643067"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      },
+      {
+        "file": "XC697078",
+        "author": "Nick Talbot",
+        "description": "tell another bird to go away",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/697078"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Hide and Seek Champ",
-        "description": "They point beaks upward and close eyes to slits - becoming near-invisible tree extensions!"
+        "description": "They point beaks upward and close eyes to slits, becoming near-invisible tree extensions!"
       },
       {
         "title": "Bug Zapper",
-        "description": "They catch moths mid-air with their huge beaks - nature's silent night-time vacuum cleaners!"
+        "description": "They catch moths mid-air with their huge beaks. Nature’s silent night-time vacuum cleaners!"
       },
       {
         "title": "Not an Owl!",
@@ -457,11 +1155,11 @@
       },
       {
         "title": "Love Sticks",
-        "description": "Mates groom each other with special 'love sticks' they find and present as gifts!"
+        "description": "Mates groom each other with special ‘love sticks’ they find and present as gifts!"
       },
       {
         "title": "Tree Hugger",
-        "description": "Chicks hug branches with wings spread flat - looking like adorable feathery pancakes!"
+        "description": "Chicks hug branches with wings spread flat, looking like adorable feathery pancakes!"
       }
     ]
   },
@@ -469,26 +1167,67 @@
     "name": "Welcome Swallow",
     "latin": "Hirundo neoxena",
     "description": "A speedy blue acrobat with forked tail streamers that twist through air like feathered fighter jets.",
+    "sounds": [
+      {
+        "file": "XC107949",
+        "author": "Matthias Feuersenger",
+        "description": "sing from a perch",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/107949"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC172260",
+        "author": "Marc Anderson",
+        "description": "call out amongst Magpies",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/172260"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC609325",
+        "author": "Marc Anderson",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/609325"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Mud Architect",
-        "description": "They build nests from 1,000+ mud pellets - tiny feathered bricklayers crafting cozy homes!"
+        "description": "They build nests from 1,000+ mud pellets. Tiny feathered bricklayers crafting cozy homes!"
       },
       {
         "title": "Wind Rider",
-        "description": "They fly 35 km/h while making sharp 90-degree turns to catch insects mid-air!"
+        "description": "They fly 35 km/h while making sharp 90° turns to catch insects mid-air!"
       },
       {
         "title": "Barn Buddy",
-        "description": "They nest inside barns and sheds, eating flies that bother livestock - farmers' feathery friends!"
+        "description": "They nest inside barns and sheds, eating flies that bother livestock. Farmers’ feathery friends!"
       },
       {
         "title": "Ocean Crosser",
-        "description": "Some migrate 2,500km from Tasmania to New Guinea - tiny birds crossing vast oceans!"
+        "description": "Some migrate 2,500km from Tasmania to New Guinea. Tiny birds crossing vast oceans!"
       },
       {
         "title": "Dust Bather",
-        "description": "They flutter in dirt roads to clean feathers - taking happy dust baths like feathered spa lovers!"
+        "description": "They flutter in dirt roads to clean feathers, taking happy dust baths like feathered spa lovers!"
       }
     ]
   },
@@ -496,26 +1235,67 @@
     "name": "White-throated Treecreeper",
     "latin": "Cormobates leucophaea",
     "description": "A tree-trunk detective that spirals upward while probing bark crevices with its curved beak.",
+    "sounds": [
+      {
+        "file": "XC187363",
+        "author": "Nick Talbot",
+        "description": "call from a forest",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/187363"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      },
+      {
+        "file": "XC201491",
+        "author": "Marc Anderson",
+        "description": "call out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/201491"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC201492",
+        "author": "Marc Anderson",
+        "description": "sing",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/201492"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Bark Inspector",
-        "description": "They only climb upward on trees, hopping down to restart - nature's feathered spiral stair climbers!"
+        "description": "They only climb upward on trees, hopping down to restart. Nature’s feathered spiral stair climbers!"
       },
       {
         "title": "Tail Prop",
-        "description": "Stiff tail feathers act as kickstands against tree trunks - built-in climbing gear!"
+        "description": "Stiff tail feathers act as kickstands against tree trunks. Built-in climbing gear!"
       },
       {
         "title": "Forest Doctor",
-        "description": "They eat harmful tree-boring insects - feathered forest medics saving sick trees!"
+        "description": "They eat harmful tree-boring insects. Feathered forest medics saving sick trees!"
       },
       {
         "title": "Secret Whistler",
-        "description": "Mates sing soft duets while climbing together - like whispering sweet nothings up tree trunks!"
+        "description": "Mates sing soft duets while climbing together, like whispering sweet nothings up tree trunks!"
       },
       {
         "title": "Cavity Sleeper",
-        "description": "They sleep jammed into narrow bark crevices - cozy feathery wedges in nature's tree pockets!"
+        "description": "They sleep jammed into narrow bark crevices. Cozy feathery wedges in nature’s tree pockets!"
       }
     ]
   },
@@ -523,26 +1303,67 @@
     "name": "Willie Wagtail",
     "latin": "Rhipidura leucophrys",
     "description": "A feisty little dancer with a constantly wiggling tail that chases away birds 10 times its size!",
+    "sounds": [
+      {
+        "file": "XC151777",
+        "author": "Mike Nelson",
+        "description": "sing out",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/151777"
+        },
+        "license": {
+          "type": "CC BY-NC-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        }
+      },
+      {
+        "file": "XC233823",
+        "author": "Marc Anderson",
+        "description": "trill",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/233823"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      },
+      {
+        "file": "XC816334",
+        "author": "Marc Anderson",
+        "description": "trill",
+        "source": {
+          "title": "Xeno-canto",
+          "url": "https://xeno-canto.org/816334"
+        },
+        "license": {
+          "type": "CC BY-NC-ND 4.0",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        }
+      }
+    ],
     "facts": [
       {
         "title": "Tail Talker",
-        "description": "They wag tails side-to-side to scare insects into moving - like feathery fishing lures!"
+        "description": "They wag tails side-to-side to scare insects into moving, like feathery fishing lures!"
       },
       {
         "title": "Fearless Fighter",
-        "description": "They dive-bomb eagles and kookaburras - tiny ninjas protecting their turf!"
+        "description": "They dive-bomb eagles and kookaburras. Tiny ninjas protecting their turf!"
       },
       {
         "title": "Campfire Friend",
-        "description": "They follow campers to catch insects stirred by footsteps - nature's cleanup crew!"
+        "description": "They follow campers to catch insects stirred by footsteps. Nature’s cleanup crew!"
       },
       {
         "title": "Mirror Warrior",
-        "description": "They attack car mirrors, thinking reflections are rivals - feathered knights jousting with reflections!"
+        "description": "They attack car mirrors, thinking reflections are rivals. Feathered knights jousting with reflections!"
       },
       {
         "title": "Moonlight Singer",
-        "description": "On bright nights, they sing sweet songs from rooftops - feathery midnight troubadours!"
+        "description": "On bright nights, they sing sweet songs from rooftops. Feathery midnight troubadours!"
       }
     ]
   }

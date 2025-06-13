@@ -18,7 +18,7 @@ I used images from the public domain, specifically John and Elizabeth Gould’s 
 
 ### Sounds
 
-I used public domain sounds from [xeno-canto](https://xeno-canto.org). Each sound has had its author credited in `details.json`, exposed in each bird’s webpage.
+I used public domain sounds from [xeno-canto](https://xeno-canto.org). Each sound has had its author credited in `details.json`, which you can more easily inspect on each bird’s webpage.
 
 Here’s how I sourced and edited the sound files:
 

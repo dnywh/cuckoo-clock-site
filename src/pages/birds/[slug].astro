@@ -64,7 +64,7 @@ if (!bird) {
                 height="140"
               />
               <figcaption>
-                Uploaded by <em>{image.author}</em> on{" "}
+                Photographed by <em>{image.author}</em> on{" "}
                 <a href={image.source.url}>{image.source.title}</a>.
                 <br />
                 {image.caption}
@@ -84,10 +84,14 @@ if (!bird) {
               <audio controls src={`/sounds/${sound.file}.mp3`} />
               When I {sound.description}
               <figcaption>
-                Uploaded by <em>{sound.author}</em> on{" "}
+                Recorded by <em>{sound.author}</em> on{" "}
                 <a href={sound.source.url}>{sound.source.title}</a>.
                 <br />
-                <a href={sound.license.url}>{sound.license.type}</a>
+                {sound.license ? (
+                  <a href={sound.license.url}>{sound.license.type}</a>
+                ) : (
+                  <p>© {sound.author}</p>
+                )}
               </figcaption>
             </figure>
           ))}

@@ -25,7 +25,7 @@ interface BirdDetails {
       title: string;
       url: string;
     };
-    license: {
+    license?: {
       type: string;
       url: string;
     };

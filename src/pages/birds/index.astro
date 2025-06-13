@@ -24,11 +24,7 @@ const mergedBirdData = getMergedBirdData();
           <Card
             href={`/birds/${slug}`}
             title={bird.name}
-            body={
-              bird.habitat
-                ? `Habitat: ${bird.habitat}`
-                : "No habitat information available"
-            }
+            body={bird.description}
           />
         ))
       }
